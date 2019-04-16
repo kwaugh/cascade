@@ -1,3 +1,15 @@
+Our Changes
+=====
+Cascade recently added preliminary support for caching bitstreams of previously compiled programs. Our goal is to extend this support in the following ways:
+
+1. See if we can compile on the module level
+2. Do hashing to check if program is in the cache rather than just checking the
+first line of the program
+3. See how we can elliminate false-positives caused by hash collision
+4. Experiment with cache replacement policies
+5. Do testing on common programming pattern workloads
+
+
 ![alt text](LOGO.png "Cascade: A JIT Compiler for Verilog from VMware Research")
 ---
 [![Build Status](https://img.shields.io/travis/com/vmware/cascade/master.svg?style=flat-square)](https://travis-ci.com/vmware/cascade)
