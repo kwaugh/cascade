@@ -6,6 +6,8 @@ Cascade recently added preliminary support for caching bitstreams of previously 
 2. Do hashing to check if program is in the cache rather than just checking the
 first line of the program
 3. See how we can elliminate false-positives caused by hash collision
+    - We have decided to just use a hashing algorithm like SHA3-512 that has an extremely low probability of getting a hash collision (assuming the hash function is uniformly random).
+    - To handle errors with collisions, we'll add a clean command to wipe the cache so that the code will get recompiled.
 4. Experiment with cache replacement policies
 5. Do testing on common programming pattern workloads
 
