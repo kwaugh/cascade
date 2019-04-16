@@ -36,6 +36,9 @@ OBJ=\
 	\
 	lib/cascade.o\
 	\
+	src/base/hash/sha3.o\
+	src/base/hash/hash.o\
+	\
 	src/base/token/tokenize.o\
 	\
 	src/runtime/data_plane.o\
@@ -98,6 +101,8 @@ OBJ=\
 HDR=\
 	src/base/bits/bits.h\
 	src/base/container/vector.h\
+	src/base/hash/hash.h\
+	src/base/hash/sha3.h\
 	src/base/log/log.h\
 	src/base/serial/serializable.h\
 	src/base/stream/bufstream.h\
