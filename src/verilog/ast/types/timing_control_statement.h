@@ -46,6 +46,7 @@ class TimingControlStatement : public Statement {
     // Node Interface:
     NODE(TimingControlStatement)
     TimingControlStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(TimingControlStatement, TimingControl, ctrl)
@@ -71,6 +72,13 @@ inline TimingControlStatement* TimingControlStatement::clone() const {
   return new TimingControlStatement(ctrl_->clone(), stmt_->clone());
 }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(TimingControlStatement);
+  STRINGIFY_SUPER(Statement);
+  STRINGIFY_POINTER(ctrl);
+  STRINGIFY_POINTER(stmt);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

@@ -93,6 +93,15 @@ inline SeqBlock* SeqBlock::clone() const {
   return res;
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(Statement);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_VECTOR(decls);
+    STRINGIFY_VECTOR(stmts);
+    STRINGIFY_VAL(scope_idx);
+    STRINGIFY_END();
+}
+
 } // namespace cascade 
 
 #endif

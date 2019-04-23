@@ -48,6 +48,7 @@ class ErrorStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(ErrorStatement)
     ErrorStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(ErrorStatement, Expression, args)
@@ -76,6 +77,12 @@ inline ErrorStatement* ErrorStatement::clone() const {
   return res;
 }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(ErrorStatement);
+  STRINGIFY_SUPER(SystemTaskEnableStatement);
+  STRINGIFY_VECTOR(args);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

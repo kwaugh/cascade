@@ -46,6 +46,7 @@ class DelayControl : public TimingControl {
     // Node Interface:
     NODE(DelayControl)
     DelayControl* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(DelayControl, Expression, delay)
@@ -67,6 +68,12 @@ inline DelayControl* DelayControl::clone() const {
   return new DelayControl(delay_->clone());
 }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(DelayControl);
+  STRINGIFY_SUPER(TimingControl);
+  STRINGIFY_POINTER(delay);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

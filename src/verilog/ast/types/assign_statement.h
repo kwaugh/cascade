@@ -50,6 +50,14 @@ class AssignStatement : public Statement {
 
 inline AssignStatement::AssignStatement(Node::Tag tag) : Statement(tag) { }
 
+std::string stringify() const {
+    ostringstream ss;
+    ss <<  "{AssignStatement,";
+    ss << "SUPER" << Node::stringify() << ",";
+    ss << "}";
+    return ss.str();
+}
+
 } // namespace cascade 
 
 #endif

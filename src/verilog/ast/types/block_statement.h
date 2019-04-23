@@ -57,6 +57,13 @@ class BlockStatement : public Statement {
 
 inline BlockStatement::BlockStatement(Node::Tag tag) : Statement(tag) { }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(BlockStatement);
+    STRINGIFY_SUPER(Statement);
+    STRINGIFY_POINTER(id);
+    STRINGIFY_END();
+}
+
 } // namespace cascade 
 
 #endif

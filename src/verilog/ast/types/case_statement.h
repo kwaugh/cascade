@@ -56,6 +56,7 @@ class CaseStatement : public Statement {
     // Node Interface:
     NODE(CaseStatement)
     CaseStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(CaseStatement, Type, type)
@@ -91,6 +92,14 @@ inline CaseStatement* CaseStatement::clone() const {
   return res;
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(CaseStatement);
+    STRINGIFY_SUPER(Statement);
+    STRINGIFY_FIELD(type);
+    STRINGIFY_POINTER(cond);
+    STRINGIFY_VECTOR(items);
+    STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

@@ -46,6 +46,7 @@ class ForeverStatement : public LoopStatement {
     // Node Interface:
     NODE(ForeverStatement)
     ForeverStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ForeverStatement, Statement, stmt)
@@ -67,6 +68,12 @@ inline ForeverStatement* ForeverStatement::clone() const {
   return new ForeverStatement(stmt_->clone());
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(ForeverStatement);
+    STRINGIFY_SUPER(LoopStatement);
+    STRINGIFY_POINTER(stmt);
+    STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

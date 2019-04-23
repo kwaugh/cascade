@@ -46,6 +46,7 @@ class ConditionalStatement : public Statement {
     // Node Interface:
     NODE(ConditionalStatement)
     ConditionalStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ConditionalStatement, Expression, if)
@@ -75,6 +76,14 @@ inline ConditionalStatement* ConditionalStatement::clone() const {
   return new ConditionalStatement(if_->clone(), then_->clone(), else_->clone());
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(ConditionalStatement);
+    STRINGIFY_SUPER(Statement);
+    STRINGIFY_POINTER(if);
+    STRINGIFY_POINTER(then);
+    STRINGIFY_POINTER(else);
+    STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

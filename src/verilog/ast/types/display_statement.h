@@ -48,6 +48,7 @@ class DisplayStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(DisplayStatement)
     DisplayStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(DisplayStatement, Expression, args)
@@ -76,6 +77,12 @@ inline DisplayStatement* DisplayStatement::clone() const {
   return res;
 }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(DisplayStatement);
+  STRINGIFY_SUPER(SystemTaskEnableStatement);
+  STRINGIFY_VECTOR(args);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

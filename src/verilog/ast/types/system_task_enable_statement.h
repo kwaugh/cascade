@@ -47,9 +47,15 @@ class SystemTaskEnableStatement : public Statement {
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
 };
+std::string stringify() const override;
 
 inline SystemTaskEnableStatement::SystemTaskEnableStatement(Node::Tag tag) : Statement(tag) { }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(SystemTaskEnableStatement);
+  STRINGIFY_SUPER(Statement);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

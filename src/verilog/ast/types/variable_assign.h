@@ -47,6 +47,7 @@ class VariableAssign : public Node {
     // Node Interface:
     NODE(VariableAssign)
     VariableAssign* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(VariableAssign, Identifier, lhs)
@@ -72,6 +73,13 @@ inline VariableAssign* VariableAssign::clone() const {
   return new VariableAssign(lhs_->clone(), rhs_->clone());
 }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(VariableAssign);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_POINTER(lhs);
+  STRINGIFY_POINTER(rhs);
+  STRINGIFY_END();
+}
 } // namespace cascade
 
 #endif

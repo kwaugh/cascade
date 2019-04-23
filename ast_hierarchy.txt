@@ -2,7 +2,7 @@ AST Inheritance Structure:
 
 Node
 Jo:
-x   ArgAssign 
+x   ArgAssign
     Attributes
     AttrSpec
     CaseGenerateItem
@@ -30,8 +30,8 @@ x   ArgAssign
             AlwaysConstruct
             GenerateConstruct
                 ConditionalGenerateConstruct
-                    IfGenerateConstruct 
-                LoopGenerateConstruct 
+                    IfGenerateConstruct
+                LoopGenerateConstruct
             InitialConstruct
         ContinuousAssign
         Declaration
@@ -46,33 +46,33 @@ x   ArgAssign
             ModuleInstantiation
         PortDeclaration
 Keivaun:
-    Statement
-        AssignStatement
-            BlockingAssign
-            NonBlockingAssign
-        BlockStatement
-            ParBlock
-            SeqBlock/
-        CaseStatement
-        ConditionalStatement
-        LoopStatement
-            ForStatement
-            ForeverStatement
-            RepeatStatement
-            WhileStatement
-        SystemTaskEnableStatement
-            DisplayStatement
-            ErrorStatement
-            FinshStatement
-            InfoStatement
-            RestartStatement 
-            RetargetStatement 
-            SaveStatement
-            WarningStatement
-            WriteStatement
-        TimingControlStatement
-        WaitStatement
-    TimingControl
-        DelayControl
-        EventControl
-    VariableAssign
+x   Statement
+x       AssignStatement
+x           BlockingAssign
+x           NonBlockingAssign
+x       BlockStatement
+x           ParBlock
+x           SeqBlock
+x       CaseStatement
+x       ConditionalStatement
+x       LoopStatement
+x           ForStatement
+x           ForeverStatement
+x           RepeatStatement
+x           WhileStatement
+x       SystemTaskEnableStatement
+x           DisplayStatement
+x           ErrorStatement
+x           FinshStatement
+x           InfoStatement
+x           RestartStatement
+x           RetargetStatement
+x           SaveStatement
+x           WarningStatement
+x           WriteStatement
+x       TimingControlStatement
+x       WaitStatement
+x   TimingControl
+x       DelayControl
+x       EventControl
+x   VariableAssign

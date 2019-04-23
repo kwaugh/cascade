@@ -57,6 +57,13 @@ inline Statement::Statement(Node::Tag tag) : Node(tag) {
   ctrl_ = 0;
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(Statement);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_BASE_FIELD(ctrl);
+    STRINGIFY_END();
+}
+
 } // namespace cascade 
 
 #endif

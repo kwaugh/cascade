@@ -79,6 +79,14 @@ inline NonblockingAssign* NonblockingAssign::clone() const {
   return res;
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(NonblockingAssign);
+    STRINGIFY_SUPER(AssignStatement);
+    STRINGIFY_POINTER(ctrl);
+    STRINGIFY_POINTER(assign);
+    STRINGIFY_END();
+}
+
 } // namespace cascade 
 
 #endif

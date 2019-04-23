@@ -47,6 +47,7 @@ class RepeatStatement : public LoopStatement {
     // Node Interface:
     NODE(RepeatStatement)
     RepeatStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(RepeatStatement, Expression, cond)
@@ -72,6 +73,13 @@ inline RepeatStatement* RepeatStatement::clone() const {
   return new RepeatStatement(cond_->clone(), stmt_->clone());
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(RepeatStatement);
+    STRINGIFY_SUPER(LoopStatement);
+    STRINGIFY_POINTER(cond);
+    STRINGIFY_POINTER(stmt);
+    STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

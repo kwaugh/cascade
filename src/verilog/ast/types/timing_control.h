@@ -48,9 +48,15 @@ class TimingControl : public Node {
     TimingControl* accept(Builder* b) const override = 0;
     TimingControl* accept(Rewriter* r) override = 0;
 };
+std::string stringify() const override;
 
 inline TimingControl::TimingControl(Node::Tag tag) : Node(tag) { }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(TimingControl);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif

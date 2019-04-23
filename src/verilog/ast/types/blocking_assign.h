@@ -48,6 +48,7 @@ class BlockingAssign : public AssignStatement {
     // Node Interface:
     NODE(BlockingAssign)
     BlockingAssign* clone() const override;
+    std::string stringify() const;
 
     // Get/Set
     MAYBE_GET_SET(BlockingAssign, TimingControl, ctrl)
@@ -77,6 +78,14 @@ inline BlockingAssign* BlockingAssign::clone() const {
   auto* res = new BlockingAssign(assign_->clone());
   MAYBE_CLONE(ctrl);
   return res;
+}
+
+std::string stringify() const {
+    STRINGIFY_BEGIN(BlockingAssign);
+    STRINGIFY_SUPER(AssignStatement);
+    STRINGIFY_POINTER(ctrl);
+    STRINGIFY_POINTER(assign);
+    STRINGIFY_END();
 }
 
 } // namespace cascade 

@@ -44,7 +44,7 @@
 
 #define STRINGIFY_BEGIN(type) \
     ostringstream ss; \
-    ss << "{" << typeid(type).name();
+    ss << "{" << typeid(type).name() << ",";
 
 #define STRINGIFY_END() \
     ss << "}";\

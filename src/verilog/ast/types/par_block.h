@@ -93,6 +93,15 @@ inline ParBlock* ParBlock::clone() const {
   return res;
 }
 
+std::string stringify() const {
+    STRINGIFY_BEGIN(ParBlock);
+    STRINGIFY_SUPER(BlockStatement);
+    STRINGIFY_VECTOR(decls);
+    STRINGIFY_VECTOR(stmts);
+    STRINGIFY_VAL(scope_idx);
+    STRINGIFY_END();
+}
+
 } // namespace cascade 
 
 #endif

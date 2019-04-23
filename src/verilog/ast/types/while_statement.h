@@ -47,6 +47,7 @@ class WhileStatement : public LoopStatement {
     // Node Interface:
     NODE(WhileStatement)
     WhileStatement* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(WhileStatement, Expression, cond)
@@ -72,6 +73,13 @@ inline WhileStatement* WhileStatement::clone() const {
   return new WhileStatement(cond_->clone(), stmt_->clone());
 }
 
+std::string stringify() const {
+  STRINGIFY_BEGIN(WhileStatement);
+  STRINGIFY_SUPER(LoopStatement);
+  STRINGIFY_POINTER(cond);
+  STRINGIFY_POINTER(stmt);
+  STRINGIFY_END();
+}
 } // namespace cascade 
 
 #endif
