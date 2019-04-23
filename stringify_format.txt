@@ -1,2 +1,3 @@
-{ NODE_TYPE, { super }, { FIELD_NODE_TYPE, ... , }, ... }  
+{ NODE_TYPE, SUPER{ super }, POINTER{ FIELD_NODE_TYPE, ... , }, VAL{ .. }, ... }  
+// no spaces
 
