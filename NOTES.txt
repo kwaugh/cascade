@@ -1,0 +1,9 @@
+We have decided that we're going to pivot to the following two ideas:
+
+1. Try to identify units that can be independently placed on the FPGA (we
+believe that Cascade already does this and gives them separate engines), and
+then do compilation for each of these separately.
+2. Only recompile when the AST changes, rather than when things like program
+variables change. This requires stringifying the AST, hashing it, and then
+storing the hash in a cache folder. Upon loading a program, if the AST already
+exists, then we can grab the bitstream that has already been compiled.
