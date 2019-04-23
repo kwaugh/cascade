@@ -1,3 +1,4 @@
-{ NODE_TYPE, SUPER{ super }, POINTER{ FIELD_NODE_TYPE, ... , }, VAL{ .. }, ... }  
+{ NODE_TYPE, SUPER super(), POINTER{ FIELD_NODE_TYPE, ... , }, VAL{ .. }, ... }  
 // no spaces
+// primitive value type should be strinified as such: VAL{data_type, value}
 
