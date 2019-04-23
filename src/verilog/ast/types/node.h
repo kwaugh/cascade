@@ -31,6 +31,7 @@
 #ifndef CASCADE_SRC_VERILOG_AST_NODE_H
 #define CASCADE_SRC_VERILOG_AST_NODE_H
 
+#include <sstream>
 #include "src/verilog/ast/types/macro.h"
 #include "src/verilog/ast/visitors/builder.h"
 #include "src/verilog/ast/visitors/editor.h"
