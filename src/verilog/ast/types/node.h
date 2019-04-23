@@ -37,6 +37,7 @@
 #include "src/verilog/ast/visitors/editor.h"
 #include "src/verilog/ast/visitors/rewriter.h"
 #include "src/verilog/ast/visitors/visitor.h"
+#include "src/verilog/ast/stringify.h"
 
 namespace cascade {
 

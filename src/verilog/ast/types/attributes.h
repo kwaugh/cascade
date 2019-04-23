@@ -67,6 +67,12 @@ class Attributes : public Node {
     MANY_ATTR(AttrSpec, as);
 };
 
+std::string Attributes::stringify() const {
+    stringify_begin(Attributes);
+    stringify_vector(PRIVATE(as));
+    stringify_end();
+}
+
 inline Attributes::Attributes() : Node(Node::Tag::attributes) {
   MANY_DEFAULT_SETUP(as);
   parent_ = nullptr;
