@@ -2,3 +2,13 @@
 // no spaces
 // primitive value type should be strinified as such: VAL{data_type, value}
 
+N   := {NodeName,SUPER N, F}
+    | {Node, F}
+
+F   := FT
+    | F, FT
+
+FT  := POINTER N
+    | VAL N
+    | VAL{ type,literal }
+    | VECTOR{ F }
