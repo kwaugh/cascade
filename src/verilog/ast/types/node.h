@@ -139,6 +139,7 @@ class Node {
     virtual void accept(Editor* e) = 0;
     virtual Node* accept(Builder* b) const = 0;
     virtual Node* accept(Rewriter* r) = 0;
+    virtual std::string stringify() const = 0;
 
     // Get/Set:
     Node* get_parent();
