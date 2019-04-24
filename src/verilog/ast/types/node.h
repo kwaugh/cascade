@@ -31,7 +31,6 @@
 #ifndef CASCADE_SRC_VERILOG_AST_NODE_H
 #define CASCADE_SRC_VERILOG_AST_NODE_H
 
-#include <sstream>
 #include "src/verilog/ast/types/macro.h"
 #include "src/verilog/ast/visitors/builder.h"
 #include "src/verilog/ast/visitors/editor.h"
@@ -238,7 +237,7 @@ inline uint32_t Node::get_val() const {
   return static_cast<uint32_t>((common_ >> idx) & mask);
 }
 
-std:::string Node::stringify() const {
+std::string Node::stringify() const {
     STRINGIFY_BEGIN(Node);
     STRINGIFY_BASE_VAL(common);
     STRINGIFY_BASE_VAL(tag);

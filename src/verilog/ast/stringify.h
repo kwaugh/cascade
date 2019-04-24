@@ -39,6 +39,7 @@
 #ifndef CASCADE_SRC_VERILOG_AST_STRINGIFY_H
 #define CASCADE_SRC_VERILOG_AST_STRINGIFY_H
 
+#include <sstream>
 #include <string>
 #include <typeinfo>
 #include "src/verilog/ast/types/macro.h"
