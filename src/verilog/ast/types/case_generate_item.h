@@ -49,7 +49,7 @@ class CaseGenerateItem : public Node {
     // Node Interface:
     NODE(CaseGenerateItem)
     CaseGenerateItem* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(CaseGenerateItem, Expression, exprs)

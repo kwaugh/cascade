@@ -73,7 +73,7 @@ class BinaryExpression : public Expression {
     // Node Interface:
     NODE(BinaryExpression)
     BinaryExpression* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set
     PTR_GET_SET(BinaryExpression, Expression, lhs)

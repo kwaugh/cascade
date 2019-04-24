@@ -47,7 +47,7 @@ class MultipleConcatenation : public Primary {
     // Node Interface:
     NODE(MultipleConcatenation)
     MultipleConcatenation* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(MultipleConcatenation, Expression, expr)

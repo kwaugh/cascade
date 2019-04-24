@@ -59,7 +59,7 @@ class UnaryExpression : public Expression {
     // Node Interface:
     NODE(UnaryExpression)
     UnaryExpression* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(UnaryExpression, Op, op)

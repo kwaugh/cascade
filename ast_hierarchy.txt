@@ -2,49 +2,48 @@ AST Inheritance Structure:
 
 Node
 Jo:
-x   ArgAssign
-    Attributes
-    AttrSpec
-    CaseGenerateItem
-    CaseItem
-    ConditionalGenerateConstruct
-        CaseGenerateConstruct
-    Event
-    Expression
-        BinaryExpression
-        ConditionalExpression
-        Primary
-            Concatenation
-            Identifier
-            MultipleConcatenation
-            Number
-            String
-        RangeExpression
-        UnaryExpression
-    GenerateBlock
-    Id
-    IfGenerateClause
-    ModuleDeclaration
-    ModuleItem
-        Construct
-            AlwaysConstruct
-            GenerateConstruct
-                ConditionalGenerateConstruct
-                    IfGenerateConstruct
-                LoopGenerateConstruct
-            InitialConstruct
-        ContinuousAssign
-        Declaration
-            GenvarDeclaration
-            IntegerDeclaration
-            LocalParamDeclaration
-            NetDelcaration
-            ParameterDeclaration
-            RegDeclaration
-        GenerateRegion
-        Instantiation
-            ModuleInstantiation
-        PortDeclaration
+x   ArgAssign 
+x   Attributes
+x   AttrSpec
+x   CaseGenerateItem
+x   CaseItem
+x   Event
+x   Expression (TODO: bits)
+x       BinaryExpression
+x       ConditionalExpression
+x       Primary
+x           Concatenation
+x           Identifier (TODO: resolution and monitor?)
+x           MultipleConcatenation
+x           Number
+x           String
+x       RangeExpression
+x       UnaryExpression
+x   GenerateBlock (TODO: scope?)
+x   Id
+x   IfGenerateClause
+x   ModuleDeclaration (TODO: decorations?)
+x   ModuleItem
+x       Construct
+x           AlwaysConstruct
+x           GenerateConstruct
+x               ConditionalGenerateConstruct
+x                   CaseGenerateConstruct
+x                   IfGenerateConstruct 
+x               LoopGenerateConstruct 
+x           InitialConstruct
+x       ContinuousAssign
+x       Declaration
+x           GenvarDeclaration
+x           IntegerDeclaration
+x           LocalParamDeclaration
+x           NetDelcaration
+x           ParameterDeclaration
+x           RegDeclaration
+x       GenerateRegion
+x       Instantiation
+x           ModuleInstantiation
+x       PortDeclaration
 Keivaun:
 x   Statement
 x       AssignStatement

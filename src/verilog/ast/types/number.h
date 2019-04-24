@@ -58,7 +58,7 @@ class Number : public Primary {
     // Node Interface 
     NODE(Number)
     Number* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Stripped down get/set:
     const Bits& get_val() const;

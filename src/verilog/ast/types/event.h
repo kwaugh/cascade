@@ -53,7 +53,7 @@ class Event : public Node {
     // Node Interface:
     NODE(Event)
     Event* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(Event, Type, type)

@@ -52,7 +52,7 @@ class Attributes : public Node {
     // Node Interface:
     NODE(Attributes)
     Attributes* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set
     MANY_GET_SET(Attributes, AttrSpec, as)

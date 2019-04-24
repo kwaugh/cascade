@@ -48,7 +48,7 @@ class AttrSpec : public Node {
     // Node Interface:
     NODE(AttrSpec)
     AttrSpec* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(AttrSpec, Identifier, lhs)

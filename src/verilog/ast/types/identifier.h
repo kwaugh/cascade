@@ -56,7 +56,7 @@ class Identifier : public Primary {
     // Node Interface:
     NODE(Identifier)
     Identifier* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(Identifier, Id, ids)

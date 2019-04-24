@@ -48,7 +48,7 @@ class String : public Primary {
     // Node Interface:
     NODE(String)
     String* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(String, Tokenize::Token, val)

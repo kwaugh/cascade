@@ -45,7 +45,7 @@ class ConditionalExpression : public Expression {
     // Node Interface:
     NODE(ConditionalExpression)
     ConditionalExpression* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ConditionalExpression, Expression, cond)

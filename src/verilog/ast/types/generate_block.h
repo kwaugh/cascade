@@ -50,7 +50,7 @@ class GenerateBlock : public Node {
     // Node Interface:
     NODE(GenerateBlock);
     GenerateBlock* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MAYBE_GET_SET(GenerateBlock, Identifier, id)

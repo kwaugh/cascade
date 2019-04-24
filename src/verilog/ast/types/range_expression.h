@@ -54,7 +54,7 @@ class RangeExpression : public Expression {
     // Node Interface:
     NODE(RangeExpression)
     RangeExpression* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(RangeExpression, Expression, upper)

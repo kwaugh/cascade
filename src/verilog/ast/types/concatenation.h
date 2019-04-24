@@ -49,7 +49,7 @@ class Concatenation : public Primary {
     // Node Interface:
     NODE(Concatenation)
     Concatenation* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(Concatenation, Expression, exprs)
