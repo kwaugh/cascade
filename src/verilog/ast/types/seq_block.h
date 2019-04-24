@@ -99,7 +99,7 @@ std::string SeqBlock::stringify() const {
     STRINGIFY_SUPER(Node);
     STRINGIFY_VECTOR(decls);
     STRINGIFY_VECTOR(stmts);
-    STRINGIFY_VAL(scope_idx);
+    /* STRINGIFY_VAL(scope_idx); */
     STRINGIFY_END();
 }
 

@@ -71,7 +71,7 @@ std::string GenerateBlock::stringify() const {
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(id);
   STRINGIFY_BASE_VAL(scope);
-  STRINGIFY_POINTER(items);
+  STRINGIFY_VECTOR(items);
   STRINGIFY_END();
 }
 

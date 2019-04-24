@@ -95,7 +95,7 @@ inline CaseStatement* CaseStatement::clone() const {
 std::string CaseStatement::stringify() const {
     STRINGIFY_BEGIN(CaseStatement);
     STRINGIFY_SUPER(Statement);
-    STRINGIFY_FIELD(type);
+    STRINGIFY_BASE_VAL((uint8_t)type);
     STRINGIFY_POINTER(cond);
     STRINGIFY_VECTOR(items);
     STRINGIFY_END();

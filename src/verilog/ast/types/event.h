@@ -67,7 +67,7 @@ class Event : public Node {
 std::string Event::stringify() const {
   STRINGIFY_BEGIN(Event);
   STRINGIFY_SUPER(Node);
-  STRINGIFY_VAL(type);
+  STRINGIFY_BASE_VAL((uint8_t)type);
   STRINGIFY_POINTER(expr);
   STRINGIFY_END();
 }

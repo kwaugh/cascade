@@ -71,7 +71,7 @@ std::string PortDeclaration::stringify() const {
   STRINGIFY_BEGIN(PortDeclaration);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_POINTER(attrs);
-  STRINGIFY_POINTER(type);
+  STRINGIFY_BASE_VAL((uint8_t)type);
   STRINGIFY_POINTER(decl);
   STRINGIFY_END();
 }

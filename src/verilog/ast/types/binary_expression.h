@@ -90,7 +90,7 @@ std::string BinaryExpression::stringify() const {
   STRINGIFY_BEGIN(BinaryExpression);
   STRINGIFY_SUPER(Expression);
   STRINGIFY_POINTER(lhs);
-  STRINGIFY_VAL(op);
+  STRINGIFY_BASE_VAL((uint8_t)op);
   STRINGIFY_POINTER(rhs);
   STRINGIFY_END();
 }

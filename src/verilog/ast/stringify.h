@@ -45,15 +45,15 @@
 #include "src/verilog/ast/types/macro.h"
 
 #define STRINGIFY_BEGIN(type) \
-    ostringstream ss; \
+    std::ostringstream ss; \
     ss << "{" << typeid(type).name() << ",";
 
 #define STRINGIFY_END() \
-    ss << "}";\
+    ss << "}"; \
     return ss.str();
 
 #define STRINGIFY_BASE_VAL(field) \
-    ss << "VAL{" << typeid(PRIVATE(field)).name() << "," << field << "},";
+    ss << "VAL{" << typeid(PRIVATE(field)).name() << "," << PRIVATE(field) << "},";
 
 #define STRINGIFY_VAL(field) \
     ss << "VAL" << PRIVATE(field).stringify() << ",";
@@ -64,10 +64,12 @@
 #define STRINGIFY_POINTER(pointer) \
     ss << "POINTER" << PRIVATE(pointer)->stringify() << ",";
 
-#define STRINGIFY_VECTOR(v) { \
+#define STRINGIFY_TOKEN(tok) \
+    ss << "TOKEN" << Tokenize::unmap(PRIVATE(tok)) << ",";
+
+#define STRINGIFY_VECTOR(v) \
     for (const auto& it : PRIVATE(v)) { \
-        ss << it.stringify(); \
-    } \
-}
+        ss << it->stringify(); \
+    }
 
 #endif

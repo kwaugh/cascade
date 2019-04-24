@@ -49,8 +49,8 @@ class Tokenize {
     typedef uint32_t Token;
 
     // Map/Unmap:
-    Token map(const std::string& s);
-    const std::string& unmap(Token t);
+    static Token map(const std::string& s);
+    static const std::string& unmap(Token t);
 
   private:
     static std::mutex lock_;

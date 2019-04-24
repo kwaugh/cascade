@@ -67,7 +67,7 @@ class String : public Primary {
 std::string String::stringify() const {
   STRINGIFY_BEGIN(String);
   STRINGIFY_SUPER(Primary);
-  STRINGIFY_BASE_VAL(get_
+  STRINGIFY_TOKEN(val);
   STRINGIFY_END();
 }
 
