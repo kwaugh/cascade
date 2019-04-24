@@ -68,7 +68,7 @@ class LoopGenerateConstruct : public GenerateConstruct {
     DECORATION(Vector<GenerateBlock*>, gen);
 };
 
-std::string LoopGenerateConstruct::stringify() const {
+inline std::string LoopGenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(LoopGenerateConstruct);
   STRINGIFY_SUPER(GenerateConstruct);
   STRINGIFY_POINTER(init);

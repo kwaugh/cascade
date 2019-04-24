@@ -94,7 +94,7 @@ class ModuleDeclaration : public Node {
     DECORATION(Scope, scope_idx);
 };
 
-std::string ModuleDeclaration::stringify() const {
+inline std::string ModuleDeclaration::stringify() const {
   STRINGIFY_BEGIN(ModuleDeclaration);
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(attrs);

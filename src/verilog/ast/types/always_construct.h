@@ -55,7 +55,7 @@ class AlwaysConstruct : public Construct {
     PTR_ATTR(Statement, stmt);
 };
 
-std::string AlwaysConstruct::stringify() const {
+inline std::string AlwaysConstruct::stringify() const {
   STRINGIFY_BEGIN(AlwaysConstruct);
   STRINGIFY_SUPER(Construct);
   STRINGIFY_POINTER(stmt);

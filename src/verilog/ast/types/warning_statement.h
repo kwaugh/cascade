@@ -77,7 +77,7 @@ inline WarningStatement* WarningStatement::clone() const {
   return res;
 }
 
-std::string WarningStatement::stringify() const {
+inline std::string WarningStatement::stringify() const {
   STRINGIFY_BEGIN(WarningStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

@@ -70,7 +70,7 @@ class UnaryExpression : public Expression {
     PTR_ATTR(Expression, lhs);
 };
 
-std::string UnaryExpression::stringify() const {
+inline std::string UnaryExpression::stringify() const {
   STRINGIFY_BEGIN(UnaryExpression);
   STRINGIFY_SUPER(Expression);
   STRINGIFY_BASE_VAL((uint8_t) op);

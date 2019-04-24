@@ -64,7 +64,7 @@ class Event : public Node {
     PTR_ATTR(Expression, expr);
 };
 
-std::string Event::stringify() const {
+inline std::string Event::stringify() const {
   STRINGIFY_BEGIN(Event);
   STRINGIFY_SUPER(Node);
   STRINGIFY_BASE_VAL((uint8_t)type);

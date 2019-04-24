@@ -77,7 +77,7 @@ inline WriteStatement* WriteStatement::clone() const {
   return res;
 }
 
-std::string WriteStatement::stringify() const {
+inline std::string WriteStatement::stringify() const {
   STRINGIFY_BEGIN(WriteStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

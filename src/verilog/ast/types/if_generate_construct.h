@@ -65,7 +65,7 @@ class IfGenerateConstruct : public ConditionalGenerateConstruct {
     MAYBE_ATTR(GenerateBlock, else);
 };
 
-std::string IfGenerateConstruct::stringify() const {
+inline std::string IfGenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(IfGenerateConstruct);
   STRINGIFY_SUPER(ConditionalGenerateConstruct);
   STRINGIFY_POINTER(attrs);

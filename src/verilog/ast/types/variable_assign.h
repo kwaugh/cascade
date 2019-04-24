@@ -73,7 +73,7 @@ inline VariableAssign* VariableAssign::clone() const {
   return new VariableAssign(lhs_->clone(), rhs_->clone());
 }
 
-std::string VariableAssign::stringify() const {
+inline std::string VariableAssign::stringify() const {
   STRINGIFY_BEGIN(VariableAssign);
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(lhs);

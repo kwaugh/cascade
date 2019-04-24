@@ -71,7 +71,7 @@ class Id : public Node {
     MAYBE_ATTR(Expression, isel);
 };
 
-std::string Id::stringify() const {
+inline std::string Id::stringify() const {
   STRINGIFY_BEGIN(Id);
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(isel);

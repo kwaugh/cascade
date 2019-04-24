@@ -77,7 +77,7 @@ inline InfoStatement* InfoStatement::clone() const {
   return res;
 }
 
-std::string InfoStatement::stringify() const {
+inline std::string InfoStatement::stringify() const {
   STRINGIFY_BEGIN(InfoStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

@@ -58,7 +58,7 @@ class MultipleConcatenation : public Primary {
     PTR_ATTR(Concatenation, concat);
 };
 
-std::string MultipleConcatenation::stringify() const {
+inline std::string MultipleConcatenation::stringify() const {
   STRINGIFY_BEGIN(MultipleConcatenation);
   STRINGIFY_SUPER(Primary);
   STRINGIFY_POINTER(expr);

@@ -49,7 +49,7 @@ class Construct : public ModuleItem {
     void accept(Visitor* v) const override = 0;
 };
 
-std::string Construct::stringify() const {
+inline std::string Construct::stringify() const {
   STRINGIFY_BEGIN(Construct);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_END();

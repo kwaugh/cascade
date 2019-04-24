@@ -54,7 +54,7 @@ class ConditionalGenerateConstruct : public GenerateConstruct {
     DECORATION(GenerateBlock*, gen);
 };
 
-std::string ConditionalGenerateConstruct::stringify() const {
+inline std::string ConditionalGenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(ConditionalGenerateConstruct);
   STRINGIFY_SUPER(GenerateConstruct);
   STRINGIFY_END();

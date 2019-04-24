@@ -61,7 +61,7 @@ class LocalparamDeclaration : public Declaration {
     PTR_ATTR(Expression, val);
 };
 
-std::string LocalparamDeclaration::stringify() const {
+inline std::string LocalparamDeclaration::stringify() const {
   STRINGIFY_BEGIN(LocalparamDeclaration);
   STRINGIFY_SUPER(Declaration);
   STRINGIFY_POINTER(dim);

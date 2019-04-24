@@ -58,7 +58,7 @@ class ConditionalExpression : public Expression {
     PTR_ATTR(Expression, rhs);
 };
 
-std::string ConditionalExpression::stringify() const {
+inline std::string ConditionalExpression::stringify() const {
   STRINGIFY_BEGIN(ConditionalExpression);
   STRINGIFY_SUPER(Expression);
   STRINGIFY_POINTER(cond);

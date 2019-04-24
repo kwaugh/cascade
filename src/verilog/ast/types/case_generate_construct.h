@@ -60,7 +60,7 @@ class CaseGenerateConstruct : public ConditionalGenerateConstruct {
     MANY_ATTR(CaseGenerateItem, items);
 };
 
-std::string CaseGenerateConstruct::stringify() const {
+inline std::string CaseGenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(CaseGenerateConstruct);
   STRINGIFY_SUPER(ConditionalGenerateConstruct);
   STRINGIFY_POINTER(cond);

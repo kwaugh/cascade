@@ -67,7 +67,7 @@ class Declaration : public ModuleItem {
     DECORATION(Vector<const Expression*>*, uses);
 };
 
-std::string Declaration::stringify() const {
+inline std::string Declaration::stringify() const {
   STRINGIFY_BEGIN(Declaration);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_POINTER(attrs);

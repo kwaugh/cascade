@@ -59,7 +59,7 @@ class ContinuousAssign : public ModuleItem {
     PTR_ATTR(VariableAssign, assign);
 };
 
-std::string ContinuousAssign::stringify() const {
+inline std::string ContinuousAssign::stringify() const {
   STRINGIFY_BEGIN(ContinuousAssign);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_POINTER(ctrl);

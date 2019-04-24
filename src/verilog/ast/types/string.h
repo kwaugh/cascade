@@ -64,7 +64,7 @@ class String : public Primary {
     VAL_ATTR(Tokenize::Token, val);
 };
 
-std::string String::stringify() const {
+inline std::string String::stringify() const {
   STRINGIFY_BEGIN(String);
   STRINGIFY_SUPER(Primary);
   STRINGIFY_TOKEN(val);

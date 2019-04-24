@@ -80,7 +80,7 @@ inline BlockingAssign* BlockingAssign::clone() const {
   return res;
 }
 
-std::string BlockingAssign::stringify() const {
+inline std::string BlockingAssign::stringify() const {
     STRINGIFY_BEGIN(BlockingAssign);
     STRINGIFY_SUPER(AssignStatement);
     STRINGIFY_POINTER(ctrl);

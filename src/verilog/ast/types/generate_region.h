@@ -56,7 +56,7 @@ class GenerateRegion : public ModuleItem {
     MANY_ATTR(ModuleItem, items);
 };
 
-std::string GenerateRegion::stringify() const {
+inline std::string GenerateRegion::stringify() const {
   STRINGIFY_BEGIN(GenerateRegion);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_VECTOR(items);

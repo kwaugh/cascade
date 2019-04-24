@@ -58,7 +58,7 @@ inline Statement::Statement(Node::Tag tag) : Node(tag) {
   ctrl_ = 0;
 }
 
-std::string Statement::stringify() const {
+inline std::string Statement::stringify() const {
     STRINGIFY_BEGIN(Statement);
     STRINGIFY_SUPER(Node);
     /* STRINGIFY_BASE_VAL(ctrl); */

@@ -77,7 +77,7 @@ class Identifier : public Primary {
     DECORATION(Vector<const Node*>, monitor);
 };
 
-std::string Identifier::stringify() const {
+inline std::string Identifier::stringify() const {
   STRINGIFY_BEGIN(Identifier);
   STRINGIFY_SUPER(Primary);
   STRINGIFY_VECTOR(ids);

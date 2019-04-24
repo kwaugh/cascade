@@ -58,7 +58,7 @@ class InitialConstruct : public Construct {
     PTR_ATTR(Statement, stmt);
 };
 
-std::string InitialConstruct::stringify() const {
+inline std::string InitialConstruct::stringify() const {
   STRINGIFY_BEGIN(InitialConstruct);
   STRINGIFY_SUPER(Construct);
   STRINGIFY_POINTER(attrs);

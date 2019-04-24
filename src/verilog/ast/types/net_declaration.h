@@ -69,7 +69,7 @@ class NetDeclaration : public Declaration {
     MAYBE_ATTR(RangeExpression, dim);
 };
 
-std::string NetDeclaration::stringify() const {
+inline std::string NetDeclaration::stringify() const {
   STRINGIFY_BEGIN(NetDeclaration);
   STRINGIFY_SUPER(Declaration);
   STRINGIFY_BASE_VAL((uint8_t) type);

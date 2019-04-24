@@ -50,7 +50,7 @@ class ModuleItem : public Node {
     ModuleItem* accept(Rewriter* r) override = 0;
 };
 
-std::string ModuleItem::stringify() const {
+inline std::string ModuleItem::stringify() const {
   STRINGIFY_BEGIN(ModuleItem);
   STRINGIFY_SUPER(Node);
   STRINGIFY_END();

@@ -77,7 +77,7 @@ inline EventControl* EventControl::clone() const {
   return res;
 }
 
-std::string EventControl::stringify() const {
+inline std::string EventControl::stringify() const {
   STRINGIFY_BEGIN(EventControl);
   STRINGIFY_SUPER(TimingControl);
   STRINGIFY_VECTOR(events);

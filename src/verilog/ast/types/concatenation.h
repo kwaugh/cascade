@@ -58,7 +58,7 @@ class Concatenation : public Primary {
     MANY_ATTR(Expression, exprs);
 };
 
-std::string Concatenation::stringify() const {
+inline std::string Concatenation::stringify() const {
   STRINGIFY_BEGIN(Concatenation);
   STRINGIFY_SUPER(Primary);
   STRINGIFY_VECTOR(exprs);

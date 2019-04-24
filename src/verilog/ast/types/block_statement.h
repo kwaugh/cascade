@@ -58,7 +58,7 @@ class BlockStatement : public Statement {
 
 inline BlockStatement::BlockStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string BlockStatement::stringify() const {
+inline std::string BlockStatement::stringify() const {
     STRINGIFY_BEGIN(BlockStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_POINTER(id);

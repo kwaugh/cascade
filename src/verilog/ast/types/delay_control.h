@@ -68,7 +68,7 @@ inline DelayControl* DelayControl::clone() const {
   return new DelayControl(delay_->clone());
 }
 
-std::string DelayControl::stringify() const {
+inline std::string DelayControl::stringify() const {
   STRINGIFY_BEGIN(DelayControl);
   STRINGIFY_SUPER(TimingControl);
   STRINGIFY_POINTER(delay);

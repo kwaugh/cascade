@@ -49,7 +49,7 @@ class GenerateConstruct : public Construct {
     void accept(Visitor* v) const override = 0;
 };
 
-std::string GenerateConstruct::stringify() const {
+inline std::string GenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(GenerateConstruct);
   STRINGIFY_SUPER(Construct);
   STRINGIFY_END();

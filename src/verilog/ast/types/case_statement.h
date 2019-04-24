@@ -92,7 +92,7 @@ inline CaseStatement* CaseStatement::clone() const {
   return res;
 }
 
-std::string CaseStatement::stringify() const {
+inline std::string CaseStatement::stringify() const {
     STRINGIFY_BEGIN(CaseStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_BASE_VAL((uint8_t)type);

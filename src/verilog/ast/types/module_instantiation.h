@@ -83,7 +83,7 @@ class ModuleInstantiation : public Instantiation {
     DECORATION(IfGenerateConstruct*, inline);
 };
 
-std::string ModuleInstantiation::stringify() const {
+inline std::string ModuleInstantiation::stringify() const {
   STRINGIFY_BEGIN(ModuleInstantiation);
   STRINGIFY_SUPER(Instantiation);
   STRINGIFY_POINTER(attrs);

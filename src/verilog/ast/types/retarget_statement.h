@@ -68,7 +68,7 @@ inline RetargetStatement* RetargetStatement::clone() const {
   return new RetargetStatement(arg_->clone());
 }
 
-std::string RetargetStatement::stringify() const {
+inline std::string RetargetStatement::stringify() const {
   STRINGIFY_BEGIN(RetargetStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_POINTER(arg);

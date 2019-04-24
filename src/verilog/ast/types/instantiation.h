@@ -49,7 +49,7 @@ class Instantiation : public ModuleItem {
     void accept(Visitor* v) const override = 0;
 };
 
-std::string Instantiation::stringify() const {
+inline std::string Instantiation::stringify() const {
   STRINGIFY_BEGIN(Instantiation);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_END();

@@ -60,7 +60,7 @@ class CaseGenerateItem : public Node {
     MAYBE_ATTR(GenerateBlock, block);
 };
 
-std::string CaseGenerateItem::stringify() const {
+inline std::string CaseGenerateItem::stringify() const {
     STRINGIFY_BEGIN(CaseGenerateItem);
     STRINGIFY_SUPER(Node);
     STRINGIFY_VECTOR(exprs);

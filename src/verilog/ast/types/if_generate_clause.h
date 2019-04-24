@@ -59,7 +59,7 @@ class IfGenerateClause : public Node {
     MAYBE_ATTR(GenerateBlock, then);
 };
 
-std::string IfGenerateClause::stringify() const {
+inline std::string IfGenerateClause::stringify() const {
   STRINGIFY_BEGIN(IfGenerateClause);
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(if);

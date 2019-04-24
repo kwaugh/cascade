@@ -60,7 +60,7 @@ class ParameterDeclaration : public Declaration {
     PTR_ATTR(Expression, val);
 };
 
-std::string ParameterDeclaration::stringify() const {
+inline std::string ParameterDeclaration::stringify() const {
   STRINGIFY_BEGIN(ParameterDeclaration);
   STRINGIFY_SUPER(Declaration);
   STRINGIFY_BASE_VAL(signed);

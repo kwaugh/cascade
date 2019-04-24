@@ -59,7 +59,7 @@ class AttrSpec : public Node {
     MAYBE_ATTR(Expression, rhs);
 };
 
-std::string AttrSpec::stringify() const {
+inline std::string AttrSpec::stringify() const {
     STRINGIFY_BEGIN(AttrSpec);
     STRINGIFY_SUPER(Node);
     STRINGIFY_POINTER(lhs);

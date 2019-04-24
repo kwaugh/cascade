@@ -51,7 +51,7 @@ class AssignStatement : public Statement {
 
 inline AssignStatement::AssignStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string AssignStatement::stringify() const {
+inline std::string AssignStatement::stringify() const {
     STRINGIFY_BEGIN(AssignStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_END();

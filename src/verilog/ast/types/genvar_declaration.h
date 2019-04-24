@@ -48,7 +48,7 @@ class GenvarDeclaration : public Declaration {
     virtual std::string stringify() const override;
 };
 
-std::string GenvarDeclaration::stringify() const {
+inline std::string GenvarDeclaration::stringify() const {
   STRINGIFY_BEGIN(GenvarDeclaration);
   STRINGIFY_SUPER(Declaration);
   STRINGIFY_END();

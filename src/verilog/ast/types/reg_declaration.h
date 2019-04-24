@@ -61,7 +61,7 @@ class RegDeclaration : public Declaration {
     MAYBE_ATTR(Expression, val);
 };
 
-std::string RegDeclaration::stringify() const {
+inline std::string RegDeclaration::stringify() const {
   STRINGIFY_BEGIN(RegDeclaration);
   STRINGIFY_SUPER(Declaration);
   STRINGIFY_BASE_VAL(signed);

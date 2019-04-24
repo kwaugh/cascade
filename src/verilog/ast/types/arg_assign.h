@@ -59,7 +59,7 @@ class ArgAssign : public Node {
     MAYBE_ATTR(Expression, imp);
 };
 
-std::string ArgAssign::stringify() const {
+inline std::string ArgAssign::stringify() const {
     STRINGIFY_BEGIN(ArgAssign);
     STRINGIFY_SUPER(Node);
     STRINGIFY_POINTER(exp);

@@ -72,7 +72,7 @@ inline TimingControlStatement* TimingControlStatement::clone() const {
   return new TimingControlStatement(ctrl_->clone(), stmt_->clone());
 }
 
-std::string TimingControlStatement::stringify() const {
+inline std::string TimingControlStatement::stringify() const {
   STRINGIFY_BEGIN(TimingControlStatement);
   STRINGIFY_SUPER(Statement);
   STRINGIFY_POINTER(ctrl);

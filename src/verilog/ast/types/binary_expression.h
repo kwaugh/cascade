@@ -86,7 +86,7 @@ class BinaryExpression : public Expression {
     PTR_ATTR(Expression, rhs);
 };
 
-std::string BinaryExpression::stringify() const {
+inline std::string BinaryExpression::stringify() const {
   STRINGIFY_BEGIN(BinaryExpression);
   STRINGIFY_SUPER(Expression);
   STRINGIFY_POINTER(lhs);

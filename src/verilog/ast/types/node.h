@@ -237,7 +237,7 @@ inline uint32_t Node::get_val() const {
   return static_cast<uint32_t>((common_ >> idx) & mask);
 }
 
-std::string Node::stringify() const {
+inline std::string Node::stringify() const {
     STRINGIFY_BEGIN(Node);
     STRINGIFY_BASE_VAL(common);
     STRINGIFY_BASE_VAL((uint32_t)tag);

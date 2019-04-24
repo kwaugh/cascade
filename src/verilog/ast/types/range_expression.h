@@ -67,7 +67,7 @@ class RangeExpression : public Expression {
     PTR_ATTR(Expression, lower);
 };
 
-std::string RangeExpression::stringify() const {
+inline std::string RangeExpression::stringify() const {
   STRINGIFY_BEGIN(RangeExpression);
   STRINGIFY_SUPER(Expression);
   STRINGIFY_POINTER(upper);

@@ -73,7 +73,7 @@ inline RepeatStatement* RepeatStatement::clone() const {
   return new RepeatStatement(cond_->clone(), stmt_->clone());
 }
 
-std::string RepeatStatement::stringify() const {
+inline std::string RepeatStatement::stringify() const {
     STRINGIFY_BEGIN(RepeatStatement);
     STRINGIFY_SUPER(LoopStatement);
     STRINGIFY_POINTER(cond);

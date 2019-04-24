@@ -51,7 +51,7 @@ class LoopStatement : public Statement {
 
 inline LoopStatement::LoopStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string LoopStatement::stringify() const {
+inline std::string LoopStatement::stringify() const {
     STRINGIFY_BEGIN(LoopStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_END();

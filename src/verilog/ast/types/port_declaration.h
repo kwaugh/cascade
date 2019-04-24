@@ -67,7 +67,7 @@ class PortDeclaration : public ModuleItem {
     PTR_ATTR(Declaration, decl);
 };
 
-std::string PortDeclaration::stringify() const {
+inline std::string PortDeclaration::stringify() const {
   STRINGIFY_BEGIN(PortDeclaration);
   STRINGIFY_SUPER(ModuleItem);
   STRINGIFY_POINTER(attrs);

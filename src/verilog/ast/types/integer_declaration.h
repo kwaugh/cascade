@@ -56,7 +56,7 @@ class IntegerDeclaration : public Declaration {
     MAYBE_ATTR(Expression, val);
 };
 
-std::string IntegerDeclaration::stringify() const {
+inline std::string IntegerDeclaration::stringify() const {
   STRINGIFY_BEGIN(IntegerDeclaration);
   STRINGIFY_SUPER(Declaration);
   STRINGIFY_POINTER(val);

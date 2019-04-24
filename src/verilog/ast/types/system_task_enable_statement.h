@@ -51,7 +51,7 @@ class SystemTaskEnableStatement : public Statement {
 
 inline SystemTaskEnableStatement::SystemTaskEnableStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string SystemTaskEnableStatement::stringify() const {
+inline std::string SystemTaskEnableStatement::stringify() const {
   STRINGIFY_BEGIN(SystemTaskEnableStatement);
   STRINGIFY_SUPER(Statement);
   STRINGIFY_END();

@@ -70,7 +70,7 @@ class Number : public Primary {
     // Expression::bit_val_
 };
 
-std::string Number::stringify() const {
+inline std::string Number::stringify() const {
   STRINGIFY_BEGIN(Number);
   STRINGIFY_SUPER(Primary);
   STRINGIFY_END();

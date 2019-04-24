@@ -68,7 +68,7 @@ inline SaveStatement* SaveStatement::clone() const {
   return new SaveStatement(arg_->clone());
 }
 
-std::string SaveStatement::stringify() const {
+inline std::string SaveStatement::stringify() const {
   STRINGIFY_BEGIN(SaveStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_POINTER(arg);

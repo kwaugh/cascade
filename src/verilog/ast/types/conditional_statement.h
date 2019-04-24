@@ -76,7 +76,7 @@ inline ConditionalStatement* ConditionalStatement::clone() const {
   return new ConditionalStatement(if_->clone(), then_->clone(), else_->clone());
 }
 
-std::string ConditionalStatement::stringify() const {
+inline std::string ConditionalStatement::stringify() const {
     STRINGIFY_BEGIN(ConditionalStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_POINTER(if);

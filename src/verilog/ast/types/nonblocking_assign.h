@@ -80,7 +80,7 @@ inline NonblockingAssign* NonblockingAssign::clone() const {
   return res;
 }
 
-std::string NonblockingAssign::stringify() const {
+inline std::string NonblockingAssign::stringify() const {
     STRINGIFY_BEGIN(NonblockingAssign);
     STRINGIFY_SUPER(AssignStatement);
     STRINGIFY_POINTER(ctrl);

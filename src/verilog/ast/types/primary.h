@@ -49,7 +49,7 @@ class Primary : public Expression {
     void accept(Visitor* v) const override = 0;
 };
 
-std::string Primary::stringify() const {
+inline std::string Primary::stringify() const {
   STRINGIFY_BEGIN(Primary);
   STRINGIFY_SUPER(Expression);
   STRINGIFY_END();

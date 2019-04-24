@@ -68,7 +68,7 @@ inline ForeverStatement* ForeverStatement::clone() const {
   return new ForeverStatement(stmt_->clone());
 }
 
-std::string ForeverStatement::stringify() const {
+inline std::string ForeverStatement::stringify() const {
     STRINGIFY_BEGIN(ForeverStatement);
     STRINGIFY_SUPER(LoopStatement);
     STRINGIFY_POINTER(stmt);

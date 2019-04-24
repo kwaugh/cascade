@@ -57,7 +57,7 @@ class Expression : public Node {
     DECORATION(Vector<Bits>, bit_val);
 };
 
-std::string Expression::stringify() const {
+inline std::string Expression::stringify() const {
   STRINGIFY_BEGIN(Expression);
   STRINGIFY_SUPER(Node);
   STRINGIFY_END();

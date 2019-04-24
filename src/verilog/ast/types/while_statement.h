@@ -73,7 +73,7 @@ inline WhileStatement* WhileStatement::clone() const {
   return new WhileStatement(cond_->clone(), stmt_->clone());
 }
 
-std::string WhileStatement::stringify() const {
+inline std::string WhileStatement::stringify() const {
   STRINGIFY_BEGIN(WhileStatement);
   STRINGIFY_SUPER(LoopStatement);
   STRINGIFY_POINTER(cond);

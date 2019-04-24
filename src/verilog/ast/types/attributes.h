@@ -68,7 +68,7 @@ class Attributes : public Node {
     MANY_ATTR(AttrSpec, as);
 };
 
-std::string Attributes::stringify() const {
+inline std::string Attributes::stringify() const {
     STRINGIFY_BEGIN(Attributes);
     STRINGIFY_SUPER(Node);
     STRINGIFY_VECTOR(as);

@@ -82,7 +82,7 @@ inline ForStatement* ForStatement::clone() const {
   return new ForStatement(init_->clone(), cond_->clone(), update_->clone(), stmt_->clone());
 }
 
-std::string ForStatement::stringify() const {
+inline std::string ForStatement::stringify() const {
     STRINGIFY_BEGIN(ForStatement);
     STRINGIFY_SUPER(LoopStatement);
     STRINGIFY_POINTER(init);

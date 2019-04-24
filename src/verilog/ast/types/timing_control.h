@@ -52,7 +52,7 @@ class TimingControl : public Node {
 
 inline TimingControl::TimingControl(Node::Tag tag) : Node(tag) { }
 
-std::string TimingControl::stringify() const {
+inline std::string TimingControl::stringify() const {
   STRINGIFY_BEGIN(TimingControl);
   STRINGIFY_SUPER(Node);
   STRINGIFY_END();

@@ -72,7 +72,7 @@ inline WaitStatement* WaitStatement::clone() const {
   return new WaitStatement(cond_->clone(), stmt_->clone());
 }
 
-std::string WaitStatement::stringify() const {
+inline std::string WaitStatement::stringify() const {
   STRINGIFY_BEGIN(WaitStatement);
   STRINGIFY_SUPER(Statement);
   STRINGIFY_POINTER(cond);

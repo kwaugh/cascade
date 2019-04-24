@@ -77,7 +77,7 @@ inline ErrorStatement* ErrorStatement::clone() const {
   return res;
 }
 
-std::string ErrorStatement::stringify() const {
+inline std::string ErrorStatement::stringify() const {
   STRINGIFY_BEGIN(ErrorStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

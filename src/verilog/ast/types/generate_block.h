@@ -66,7 +66,7 @@ class GenerateBlock : public Node {
     DECORATION(Scope, scope_idx);
 };
 
-std::string GenerateBlock::stringify() const {
+inline std::string GenerateBlock::stringify() const {
   STRINGIFY_BEGIN(GenerateBlock);
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(id);

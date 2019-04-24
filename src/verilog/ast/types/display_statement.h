@@ -77,7 +77,7 @@ inline DisplayStatement* DisplayStatement::clone() const {
   return res;
 }
 
-std::string DisplayStatement::stringify() const {
+inline std::string DisplayStatement::stringify() const {
   STRINGIFY_BEGIN(DisplayStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

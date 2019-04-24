@@ -60,7 +60,7 @@ class CaseItem : public Node {
     PTR_ATTR(Statement, stmt);
 };
 
-std::string CaseItem::stringify() const {
+inline std::string CaseItem::stringify() const {
     STRINGIFY_BEGIN(CaseItem);
     STRINGIFY_SUPER(Node);
     STRINGIFY_VECTOR(exprs);

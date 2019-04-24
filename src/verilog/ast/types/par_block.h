@@ -94,7 +94,7 @@ inline ParBlock* ParBlock::clone() const {
   return res;
 }
 
-std::string ParBlock::stringify() const {
+inline std::string ParBlock::stringify() const {
     STRINGIFY_BEGIN(ParBlock);
     STRINGIFY_SUPER(BlockStatement);
     STRINGIFY_VECTOR(decls);
