@@ -47,6 +47,7 @@ class BlockStatement : public Statement {
     BlockStatement* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MAYBE_GET_SET(BlockStatment, Identifier, id)
@@ -57,7 +58,7 @@ class BlockStatement : public Statement {
 
 inline BlockStatement::BlockStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string stringify() const {
+std::string BlockStatement::stringify() const {
     STRINGIFY_BEGIN(BlockStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_POINTER(id);

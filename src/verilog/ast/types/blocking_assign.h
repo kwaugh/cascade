@@ -48,7 +48,7 @@ class BlockingAssign : public AssignStatement {
     // Node Interface:
     NODE(BlockingAssign)
     BlockingAssign* clone() const override;
-    std::string stringify() const;
+    virtual std::string stringify() const override;
 
     // Get/Set
     MAYBE_GET_SET(BlockingAssign, TimingControl, ctrl)
@@ -80,7 +80,7 @@ inline BlockingAssign* BlockingAssign::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string BlockingAssign::stringify() const {
     STRINGIFY_BEGIN(BlockingAssign);
     STRINGIFY_SUPER(AssignStatement);
     STRINGIFY_POINTER(ctrl);

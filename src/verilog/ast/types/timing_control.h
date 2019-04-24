@@ -47,12 +47,12 @@ class TimingControl : public Node {
     void accept(Editor* e) override = 0;
     TimingControl* accept(Builder* b) const override = 0;
     TimingControl* accept(Rewriter* r) override = 0;
+    virtual std::string stringify() const override;
 };
-std::string stringify() const override;
 
 inline TimingControl::TimingControl(Node::Tag tag) : Node(tag) { }
 
-std::string stringify() const {
+std::string TimingControl::stringify() const {
   STRINGIFY_BEGIN(TimingControl);
   STRINGIFY_SUPER(Node);
   STRINGIFY_END();

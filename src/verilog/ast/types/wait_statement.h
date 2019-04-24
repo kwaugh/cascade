@@ -46,7 +46,7 @@ class WaitStatement : public Statement {
     // Node Interface:
     NODE(WaitStatement)
     WaitStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(WaitStatement, Expression, cond)
@@ -72,7 +72,7 @@ inline WaitStatement* WaitStatement::clone() const {
   return new WaitStatement(cond_->clone(), stmt_->clone());
 }
 
-std::string stringify() const {
+std::string WaitStatement::stringify() const {
   STRINGIFY_BEGIN(WaitStatement);
   STRINGIFY_SUPER(Statement);
   STRINGIFY_POINTER(cond);

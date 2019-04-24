@@ -46,7 +46,7 @@ class RetargetStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(RetargetStatement)
     RetargetStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(RetargetStatement, String, arg)
@@ -68,7 +68,7 @@ inline RetargetStatement* RetargetStatement::clone() const {
   return new RetargetStatement(arg_->clone());
 }
 
-std::string stringify() const {
+std::string RetargetStatement::stringify() const {
   STRINGIFY_BEGIN(RetargetStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_POINTER(arg);

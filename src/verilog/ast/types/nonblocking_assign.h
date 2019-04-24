@@ -48,6 +48,7 @@ class NonblockingAssign : public AssignStatement {
     // Node Interface:
     NODE(NonblockingAssign)
     NonblockingAssign* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MAYBE_GET_SET(NonblockingAssign, TimingControl, ctrl)
@@ -79,7 +80,7 @@ inline NonblockingAssign* NonblockingAssign::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string NonblockingAssign::stringify() const {
     STRINGIFY_BEGIN(NonblockingAssign);
     STRINGIFY_SUPER(AssignStatement);
     STRINGIFY_POINTER(ctrl);

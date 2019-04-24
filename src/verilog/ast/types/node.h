@@ -140,7 +140,7 @@ class Node {
     virtual void accept(Editor* e) = 0;
     virtual Node* accept(Builder* b) const = 0;
     virtual Node* accept(Rewriter* r) = 0;
-    virtual std::string stringify() const = 0;
+    virtual std::string stringify() const;
 
     // Get/Set:
     Node* get_parent();
@@ -236,6 +236,13 @@ template <size_t idx, size_t w>
 inline uint32_t Node::get_val() const {
   const auto mask = (static_cast<uint32_t>(1) << w) - 1;
   return static_cast<uint32_t>((common_ >> idx) & mask);
+}
+
+std:::string Node::stringify() const {
+    STRINGIFY_BEGIN(Node);
+    STRINGIFY_BASE_VAL(common);
+    STRINGIFY_BASE_VAL(tag);
+    STRINGIFY_END();
 }
 
 } // namespace cascade

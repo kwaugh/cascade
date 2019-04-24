@@ -46,7 +46,7 @@ class SaveStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(SaveStatement)
     SaveStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(SaveStatement, String, arg)
@@ -68,7 +68,7 @@ inline SaveStatement* SaveStatement::clone() const {
   return new SaveStatement(arg_->clone());
 }
 
-std::string stringify() const {
+std::string SaveStatement::stringify() const {
   STRINGIFY_BEGIN(SaveStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_POINTER(arg);

@@ -48,7 +48,7 @@ class InfoStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(InfoStatement)
     InfoStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(InfoStatement, Expression, args)
@@ -77,7 +77,7 @@ inline InfoStatement* InfoStatement::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string InfoStatement::stringify() const {
   STRINGIFY_BEGIN(InfoStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

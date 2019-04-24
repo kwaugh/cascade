@@ -51,6 +51,7 @@ class SeqBlock : public BlockStatement {
     // Node Interface:
     NODE(SeqBlock)
     SeqBlock* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(SeqBlock, Declaration, decls)
@@ -93,7 +94,7 @@ inline SeqBlock* SeqBlock::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string SeqBlock::stringify() const {
     STRINGIFY_BEGIN(Statement);
     STRINGIFY_SUPER(Node);
     STRINGIFY_VECTOR(decls);

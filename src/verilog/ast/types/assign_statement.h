@@ -46,16 +46,15 @@ class AssignStatement : public Statement {
     AssignStatement* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
+    virtual std::string stringify() const override;
 };
 
 inline AssignStatement::AssignStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string stringify() const {
-    ostringstream ss;
-    ss <<  "{AssignStatement,";
-    ss << "SUPER" << Node::stringify() << ",";
-    ss << "}";
-    return ss.str();
+std::string AssignStatement::stringify() const {
+    STRINGIFY_BEGIN(AssignStatement);
+    STRINGIFY_SUPER(Statement);
+    STRINGIFY_END();
 }
 
 } // namespace cascade 

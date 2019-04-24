@@ -48,7 +48,7 @@ class WriteStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(WriteStatement)
     WriteStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(WriteStatement, Expression, args)
@@ -77,7 +77,7 @@ inline WriteStatement* WriteStatement::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string WriteStatement::stringify() const {
   STRINGIFY_BEGIN(WriteStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);

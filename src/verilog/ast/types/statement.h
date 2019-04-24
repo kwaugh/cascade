@@ -47,6 +47,7 @@ class Statement : public Node {
     void accept(Editor* e) override = 0;
     Statement* accept(Builder* b) const override = 0;
     Statement* accept(Rewriter* r) override = 0;
+    virtual std::string stringify() const override;
 
   private:
     friend class SwLogic;
@@ -57,7 +58,7 @@ inline Statement::Statement(Node::Tag tag) : Node(tag) {
   ctrl_ = 0;
 }
 
-std::string stringify() const {
+std::string Statement::stringify() const {
     STRINGIFY_BEGIN(Statement);
     STRINGIFY_SUPER(Node);
     STRINGIFY_BASE_FIELD(ctrl);

@@ -46,12 +46,12 @@ class LoopStatement : public Statement {
     LoopStatement* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
+    virtual std::string stringify() const override;
 };
-std::string stringify() const override;
 
 inline LoopStatement::LoopStatement(Node::Tag tag) : Statement(tag) { }
 
-std::string stringify() const {
+std::string LoopStatement::stringify() const {
     STRINGIFY_BEGIN(LoopStatement);
     STRINGIFY_SUPER(Statement);
     STRINGIFY_END();

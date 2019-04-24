@@ -46,7 +46,7 @@ class RestartStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(RestartStatement)
     RestartStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(RestartStatement, String, arg)
@@ -68,7 +68,7 @@ inline RestartStatement* RestartStatement::clone() const {
   return new RestartStatement(arg_->clone());
 }
 
-std::string stringify() const {
+std::string RestartStatement::stringify() const {
   STRINGIFY_BEGIN(RestartStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_POINTER(arg);

@@ -48,7 +48,7 @@ class ForStatement : public LoopStatement {
     // Node Interface:
     NODE(ForStatement)
     ForStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ForStatement, VariableAssign, init)
@@ -82,7 +82,7 @@ inline ForStatement* ForStatement::clone() const {
   return new ForStatement(init_->clone(), cond_->clone(), update_->clone(), stmt_->clone());
 }
 
-std::string stringify() const {
+std::string ForStatement::stringify() const {
     STRINGIFY_BEGIN(ForStatement);
     STRINGIFY_SUPER(LoopStatement);
     STRINGIFY_POINTER(init);

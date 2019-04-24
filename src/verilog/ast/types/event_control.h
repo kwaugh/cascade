@@ -48,7 +48,7 @@ class EventControl : public TimingControl {
     // Node Interface:
     NODE(EventControl)
     EventControl* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(EventControl, Event, events)
@@ -77,7 +77,7 @@ inline EventControl* EventControl::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string EventControl::stringify() const {
   STRINGIFY_BEGIN(EventControl);
   STRINGIFY_SUPER(TimingControl);
   STRINGIFY_VECTOR(events);

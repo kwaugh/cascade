@@ -51,6 +51,7 @@ class ParBlock : public BlockStatement {
     // Node Interface:
     NODE(ParBlock)
     ParBlock* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(ParBlock, Declaration, decls)
@@ -93,7 +94,7 @@ inline ParBlock* ParBlock::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string ParBlock::stringify() const {
     STRINGIFY_BEGIN(ParBlock);
     STRINGIFY_SUPER(BlockStatement);
     STRINGIFY_VECTOR(decls);

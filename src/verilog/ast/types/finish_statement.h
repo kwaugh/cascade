@@ -46,7 +46,7 @@ class FinishStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(FinishStatement)
     FinishStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(FinishStatement, Expression, arg)
@@ -68,7 +68,7 @@ inline FinishStatement* FinishStatement::clone() const {
   return new FinishStatement(arg_->clone());
 }
 
-std::string stringify() const {
+std::string FinishStatement::stringify() const {
   STRINGIFY_BEGIN(FinishStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_POINTER(arg);

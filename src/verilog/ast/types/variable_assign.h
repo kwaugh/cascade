@@ -47,7 +47,7 @@ class VariableAssign : public Node {
     // Node Interface:
     NODE(VariableAssign)
     VariableAssign* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(VariableAssign, Identifier, lhs)

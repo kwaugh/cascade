@@ -48,7 +48,7 @@ class WarningStatement : public SystemTaskEnableStatement {
     // Node Interface:
     NODE(WarningStatement)
     WarningStatement* clone() const override;
-    std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(WarningStatement, Expression, args)
@@ -77,7 +77,7 @@ inline WarningStatement* WarningStatement::clone() const {
   return res;
 }
 
-std::string stringify() const {
+std::string WarningStatement::stringify() const {
   STRINGIFY_BEGIN(WarningStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
   STRINGIFY_VECTOR(args);
