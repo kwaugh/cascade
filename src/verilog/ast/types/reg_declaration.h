@@ -48,6 +48,7 @@ class RegDeclaration : public Declaration {
     // Node Interface:
     NODE(RegDeclaration)
     RegDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(RegDeclaration, bool, signed)
@@ -59,6 +60,15 @@ class RegDeclaration : public Declaration {
     MAYBE_ATTR(RangeExpression, dim);
     MAYBE_ATTR(Expression, val);
 };
+
+std::string RegDeclaration::stringify() const {
+  STRINGIFY_BEGIN(RegDeclaration);
+  STRINGIFY_SUPER(Declaration);
+  STRINGIFY_BASE_VAL(signed);
+  STRINGIFY_POINTER(dim);
+  STRINGIFY_POINTER(val);
+  STRINGIFY_END();
+}
 
 inline RegDeclaration::RegDeclaration(Attributes* attrs__, Identifier* id__, bool signed__) : Declaration(Node::Tag::reg_declaration) {
   PTR_SETUP(attrs);

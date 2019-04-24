@@ -56,6 +56,7 @@ class Identifier : public Primary {
     // Node Interface:
     NODE(Identifier)
     Identifier* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(Identifier, Id, ids)
@@ -75,6 +76,14 @@ class Identifier : public Primary {
     friend class SwLogic;
     DECORATION(Vector<const Node*>, monitor);
 };
+
+std::string Identifier::stringify() const {
+  STRINGIFY_BEGIN(Identifier);
+  STRINGIFY_SUPER(Primary);
+  STRINGIFY_VECTOR(ids);
+  STRINGIFY_VECTOR(dim);
+  STRINGIFY_END();
+}
 
 inline Identifier::Identifier() : Primary(Node::Tag::identifier) { 
   MANY_DEFAULT_SETUP(ids);

@@ -49,6 +49,7 @@ class CaseItem : public Node {
     // Node Interface:
     NODE(CaseItem)
     CaseItem* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(CaseItem, Expression, exprs)
@@ -58,6 +59,14 @@ class CaseItem : public Node {
     MANY_ATTR(Expression, exprs);
     PTR_ATTR(Statement, stmt);
 };
+
+std::string CaseItem::stringify() const {
+    STRINGIFY_BEGIN(CaseItem);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_VECTOR(exprs);
+    STRINGIFY_POINTER(stmt);
+    STRINGIFY_END();
+}
 
 inline CaseItem::CaseItem(Statement* stmt__) : Node(Node::Tag::case_item) {
   MANY_DEFAULT_SETUP(exprs);

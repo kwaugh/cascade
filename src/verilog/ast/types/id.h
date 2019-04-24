@@ -52,6 +52,7 @@ class Id : public Node {
     // Node Interface:
     NODE(Id);
     Id* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(Id, Tokenize::Token, sid)
@@ -69,6 +70,13 @@ class Id : public Node {
     VAL_ATTR(Tokenize::Token, sid);
     MAYBE_ATTR(Expression, isel);
 };
+
+std::string Id::stringify() const {
+  STRINGIFY_BEGIN(Id);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_POINTER(isel);
+  STRINGIFY_END();
+}
 
 inline Id::Id(const std::string& sid__) : Id(Tokenize().map(sid__)) { }
 

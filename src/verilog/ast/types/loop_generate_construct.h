@@ -50,6 +50,7 @@ class LoopGenerateConstruct : public GenerateConstruct {
     // Node Interface:
     NODE(LoopGenerateConstruct)
     LoopGenerateConstruct* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(LoopGenerateConstruct, VariableAssign, init)
@@ -66,6 +67,16 @@ class LoopGenerateConstruct : public GenerateConstruct {
     friend class Elaborate;
     DECORATION(Vector<GenerateBlock*>, gen);
 };
+
+std::string LoopGenerateConstruct::stringify() const {
+  STRINGIFY_BEGIN(LoopGenerateConstruct);
+  STRINGIFY_SUPER(GenerateConstruct);
+  STRINGIFY_POINTER(init);
+  STRINGIFY_POINTER(cond);
+  STRINGIFY_POINTER(update);
+  STRINGIFY_POINTER(block);
+  STRINGIFY_END();
+}
 
 inline LoopGenerateConstruct::LoopGenerateConstruct(VariableAssign* init__, Expression* cond__, VariableAssign* update__, GenerateBlock* block__) : GenerateConstruct(Node::Tag::loop_generate_construct) {
   PTR_SETUP(init);

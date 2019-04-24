@@ -45,6 +45,7 @@ class ConditionalExpression : public Expression {
     // Node Interface:
     NODE(ConditionalExpression)
     ConditionalExpression* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ConditionalExpression, Expression, cond)
@@ -56,6 +57,15 @@ class ConditionalExpression : public Expression {
     PTR_ATTR(Expression, lhs);
     PTR_ATTR(Expression, rhs);
 };
+
+std::string ConditionalExpression::stringify() const {
+  STRINGIFY_BEGIN(ConditionalExpression);
+  STRINGIFY_SUPER(Expression);
+  STRINGIFY_POINTER(cond);
+  STRINGIFY_POINTER(lhs);
+  STRINGIFY_POINTER(rhs);
+  STRINGIFY_END();
+}
 
 inline ConditionalExpression::ConditionalExpression(Expression* cond__, Expression* lhs__, Expression* rhs__) : Expression(Node::Tag::conditional_expression) {
   PTR_SETUP(cond);

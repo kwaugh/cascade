@@ -48,6 +48,7 @@ class String : public Primary {
     // Node Interface:
     NODE(String)
     String* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(String, Tokenize::Token, val)
@@ -62,6 +63,13 @@ class String : public Primary {
   private:
     VAL_ATTR(Tokenize::Token, val);
 };
+
+std::string String::stringify() const {
+  STRINGIFY_BEGIN(String);
+  STRINGIFY_SUPER(Primary);
+  STRINGIFY_BASE_VAL(get_
+  STRINGIFY_END();
+}
 
 inline String::String(const std::string& val) : String(Tokenize().map(val)) { }
 

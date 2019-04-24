@@ -48,6 +48,7 @@ class Declaration : public ModuleItem {
 
     // Node Interface:
     Declaration* clone() const override = 0;
+    virtual std::string stringify() const override;
     void accept(Visitor* v) const override = 0;
     void accept(Editor* e) override = 0;
     Declaration* accept(Builder* b) const override = 0;
@@ -65,6 +66,14 @@ class Declaration : public ModuleItem {
     friend class Resolve;
     DECORATION(Vector<const Expression*>*, uses);
 };
+
+std::string Declaration::stringify() const {
+  STRINGIFY_BEGIN(Declaration);
+  STRINGIFY_SUPER(ModuleItem);
+  STRINGIFY_POINTER(attrs);
+  STRINGIFY_POINTER(id);
+  STRINGIFY_END();
+}
 
 inline Declaration::Declaration(Node::Tag tag) : ModuleItem(tag) { 
   uses_ = nullptr;

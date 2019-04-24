@@ -43,10 +43,17 @@ class Construct : public ModuleItem {
 
     // Node Interface:
     Construct* clone() const override = 0;
+    virtual std::string stringify() const override;
     Construct* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
 };
+
+std::string Construct::stringify() const {
+  STRINGIFY_BEGIN(Construct);
+  STRINGIFY_SUPER(ModuleItem);
+  STRINGIFY_END();
+}
 
 inline Construct::Construct(Node::Tag tag) : ModuleItem(tag) { }
 

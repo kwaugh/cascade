@@ -47,6 +47,7 @@ class MultipleConcatenation : public Primary {
     // Node Interface:
     NODE(MultipleConcatenation)
     MultipleConcatenation* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(MultipleConcatenation, Expression, expr)
@@ -56,6 +57,14 @@ class MultipleConcatenation : public Primary {
     PTR_ATTR(Expression, expr);
     PTR_ATTR(Concatenation, concat);
 };
+
+std::string MultipleConcatenation::stringify() const {
+  STRINGIFY_BEGIN(MultipleConcatenation);
+  STRINGIFY_SUPER(Primary);
+  STRINGIFY_POINTER(expr);
+  STRINGIFY_POINTER(concat);
+  STRINGIFY_END();
+}
 
 inline MultipleConcatenation::MultipleConcatenation(Expression* expr__, Concatenation* concat__) : Primary(Node::Tag::multiple_concatenation) {
   PTR_SETUP(expr);

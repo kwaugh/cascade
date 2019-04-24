@@ -49,6 +49,7 @@ class Concatenation : public Primary {
     // Node Interface:
     NODE(Concatenation)
     Concatenation* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(Concatenation, Expression, exprs)
@@ -56,6 +57,13 @@ class Concatenation : public Primary {
   private:
     MANY_ATTR(Expression, exprs);
 };
+
+std::string Concatenation::stringify() const {
+  STRINGIFY_BEGIN(Concatenation);
+  STRINGIFY_SUPER(Primary);
+  STRINGIFY_VECTOR(exprs);
+  STRINGIFY_END();
+}
 
 inline Concatenation::Concatenation() : Primary(Node::Tag::concatenation) {
   MANY_DEFAULT_SETUP(exprs);

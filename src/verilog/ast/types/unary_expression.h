@@ -59,6 +59,7 @@ class UnaryExpression : public Expression {
     // Node Interface:
     NODE(UnaryExpression)
     UnaryExpression* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(UnaryExpression, Op, op)
@@ -68,6 +69,14 @@ class UnaryExpression : public Expression {
     VAL_ATTR(Op, op);
     PTR_ATTR(Expression, lhs);
 };
+
+std::string UnaryExpression::stringify() const {
+  STRINGIFY_BEGIN(UnaryExpression);
+  STRINGIFY_SUPER(Expression);
+  STRINGIFY_BASE_VAL((uint8_t) op);
+  STRINGIFY_POINTER(lhs);
+  STRINGIFY_END();
+}
 
 inline UnaryExpression::UnaryExpression(Op op__, Expression* lhs__) : Expression(Node::Tag::unary_expression) {
   parent_ = nullptr;

@@ -49,6 +49,7 @@ class CaseGenerateItem : public Node {
     // Node Interface:
     NODE(CaseGenerateItem)
     CaseGenerateItem* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(CaseGenerateItem, Expression, exprs)
@@ -58,6 +59,14 @@ class CaseGenerateItem : public Node {
     MANY_ATTR(Expression, exprs);
     MAYBE_ATTR(GenerateBlock, block);
 };
+
+std::string CaseGenerateItem::stringify() const {
+    STRINGIFY_BEGIN(CaseGenerateItem);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_VECTOR(exprs);
+    STRINGIFY_POINTER(block);
+    STRINGIFY_END();
+}
 
 inline CaseGenerateItem::CaseGenerateItem() : Node(Node::Tag::case_generate_item) {
   MANY_DEFAULT_SETUP(exprs);

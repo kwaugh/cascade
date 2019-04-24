@@ -45,7 +45,14 @@ class GenvarDeclaration : public Declaration {
     // Node Interface:
     NODE(GenvarDeclaration)
     GenvarDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 };
+
+std::string GenvarDeclaration::stringify() const {
+  STRINGIFY_BEGIN(GenvarDeclaration);
+  STRINGIFY_SUPER(Declaration);
+  STRINGIFY_END();
+}
 
 inline GenvarDeclaration::GenvarDeclaration(Attributes* attrs__, Identifier* id__) : Declaration(Node::Tag::genvar_declaration) {
   PTR_SETUP(attrs);

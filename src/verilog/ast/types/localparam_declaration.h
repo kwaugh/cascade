@@ -48,6 +48,7 @@ class LocalparamDeclaration : public Declaration {
     // Node Interface:
     NODE(LocalparamDeclaration)
     LocalparamDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(LocalparamDeclaration, bool, signed)
@@ -59,6 +60,15 @@ class LocalparamDeclaration : public Declaration {
     VAL_ATTR(bool, signed);
     PTR_ATTR(Expression, val);
 };
+
+std::string LocalparamDeclaration::stringify() const {
+  STRINGIFY_BEGIN(LocalparamDeclaration);
+  STRINGIFY_SUPER(Declaration);
+  STRINGIFY_POINTER(dim);
+  STRINGIFY_BASE_VAL(signed);
+  STRINGIFY_POINTER(val);
+  STRINGIFY_END();
+}
 
 inline LocalparamDeclaration::LocalparamDeclaration(Attributes* attrs__, bool signed__, Identifier* id__, Expression* val__) : Declaration(Node::Tag::localparam_declaration) {
   PTR_SETUP(attrs);

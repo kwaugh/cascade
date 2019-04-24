@@ -56,6 +56,7 @@ class ModuleDeclaration : public Node {
     // Node Interface:
     NODE(ModuleDeclaration)
     ModuleDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ModuleDeclaration, Attributes, attrs)
@@ -92,6 +93,16 @@ class ModuleDeclaration : public Node {
     friend class Navigate;
     DECORATION(Scope, scope_idx);
 };
+
+std::string ModuleDeclaration::stringify() const {
+  STRINGIFY_BEGIN(ModuleDeclaration);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_POINTER(attrs);
+  STRINGIFY_POINTER(id);
+  STRINGIFY_VECTOR(ports);
+  STRINGIFY_VECTOR(items);
+  STRINGIFY_END();
+}
 
 inline ModuleDeclaration::ModuleDeclaration(Attributes* attrs__, Identifier* id__) : Node(Node::Tag::module_declaration) {
   PTR_SETUP(attrs);

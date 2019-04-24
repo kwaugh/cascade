@@ -50,6 +50,7 @@ class GenerateBlock : public Node {
     // Node Interface:
     NODE(GenerateBlock);
     GenerateBlock* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     MAYBE_GET_SET(GenerateBlock, Identifier, id)
@@ -64,6 +65,15 @@ class GenerateBlock : public Node {
     friend class Navigate;
     DECORATION(Scope, scope_idx);
 };
+
+std::string GenerateBlock::stringify() const {
+  STRINGIFY_BEGIN(GenerateBlock);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_POINTER(id);
+  STRINGIFY_BASE_VAL(scope);
+  STRINGIFY_POINTER(items);
+  STRINGIFY_END();
+}
 
 inline GenerateBlock::GenerateBlock(bool scope__) : Node(Node::Tag::generate_block) {
   MAYBE_DEFAULT_SETUP(id);

@@ -48,6 +48,7 @@ class AttrSpec : public Node {
     // Node Interface:
     NODE(AttrSpec)
     AttrSpec* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(AttrSpec, Identifier, lhs)
@@ -57,6 +58,14 @@ class AttrSpec : public Node {
     PTR_ATTR(Identifier, lhs);
     MAYBE_ATTR(Expression, rhs);
 };
+
+std::string AttrSpec::stringify() const {
+    STRINGIFY_BEGIN(AttrSpec);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_POINTER(lhs);
+    STRINGIFY_POINTER(rhs);
+    STRINGIFY_END();
+}
 
 inline AttrSpec::AttrSpec(Identifier* lhs__) : Node(Node::Tag::attr_spec) { 
   PTR_SETUP(lhs);

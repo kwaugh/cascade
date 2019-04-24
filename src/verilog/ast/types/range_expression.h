@@ -54,6 +54,7 @@ class RangeExpression : public Expression {
     // Node Interface:
     NODE(RangeExpression)
     RangeExpression* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(RangeExpression, Expression, upper)
@@ -65,6 +66,15 @@ class RangeExpression : public Expression {
     VAL_ATTR(Type, type);
     PTR_ATTR(Expression, lower);
 };
+
+std::string RangeExpression::stringify() const {
+  STRINGIFY_BEGIN(RangeExpression);
+  STRINGIFY_SUPER(Expression);
+  STRINGIFY_POINTER(upper);
+  STRINGIFY_BASE_VAL((uint8_t) type);
+  STRINGIFY_POINTER(lower);
+  STRINGIFY_END();
+}
 
 inline RangeExpression::RangeExpression(size_t i__, size_t j__) : Expression(Node::Tag::range_expression) {
   std::stringstream ssu;

@@ -113,7 +113,8 @@
   } \
   T* accept(Rewriter* r) override { \
     return (T*) r->rewrite(this); \
-  }
+  } \
+
 // Clones a non-null maybe and inserts the result into the corresponding
 // location in res
 #define MAYBE_CLONE(t) \

@@ -48,6 +48,7 @@ class IfGenerateClause : public Node {
     // Node Interface:
     NODE(IfGenerateClause)
     IfGenerateClause* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(IfGenerateClause, Expression, if)
@@ -57,6 +58,14 @@ class IfGenerateClause : public Node {
     PTR_ATTR(Expression, if);
     MAYBE_ATTR(GenerateBlock, then);
 };
+
+std::string IfGenerateClause::stringify() const {
+  STRINGIFY_BEGIN(IfGenerateClause);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_POINTER(if);
+  STRINGIFY_POINTER(then);
+  STRINGIFY_END();
+}
 
 inline IfGenerateClause::IfGenerateClause(Expression* if__) : Node(Node::Tag::if_generate_clause) {
   PTR_SETUP(if);

@@ -53,6 +53,7 @@ class ModuleInstantiation : public Instantiation {
     // Node Interface:
     NODE(ModuleInstantiation)
     ModuleInstantiation* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(ModuleInstantiation, Attributes, attrs)
@@ -81,6 +82,18 @@ class ModuleInstantiation : public Instantiation {
     DECORATION(ModuleDeclaration*, inst);
     DECORATION(IfGenerateConstruct*, inline);
 };
+
+std::string ModuleInstantiation::stringify() const {
+  STRINGIFY_BEGIN(ModuleInstantiation);
+  STRINGIFY_SUPER(Instantiation);
+  STRINGIFY_POINTER(attrs);
+  STRINGIFY_POINTER(mid);
+  STRINGIFY_POINTER(iid);
+  STRINGIFY_POINTER(range);
+  STRINGIFY_VECTOR(params);
+  STRINGIFY_VECTOR(ports);
+  STRINGIFY_END();
+}
 
 inline ModuleInstantiation::ModuleInstantiation(Attributes* attrs__, Identifier* mid__, Identifier* iid__) : Instantiation(Node::Tag::module_instantiation) {
   PTR_SETUP(attrs);

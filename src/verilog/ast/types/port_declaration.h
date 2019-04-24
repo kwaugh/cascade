@@ -54,6 +54,7 @@ class PortDeclaration : public ModuleItem {
     // Node Interface:
     NODE(PortDeclaration)
     PortDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(PortDeclaration, Attributes, attrs)
@@ -65,6 +66,15 @@ class PortDeclaration : public ModuleItem {
     VAL_ATTR(Type, type);
     PTR_ATTR(Declaration, decl);
 };
+
+std::string PortDeclaration::stringify() const {
+  STRINGIFY_BEGIN(PortDeclaration);
+  STRINGIFY_SUPER(ModuleItem);
+  STRINGIFY_POINTER(attrs);
+  STRINGIFY_POINTER(type);
+  STRINGIFY_POINTER(decl);
+  STRINGIFY_END();
+}
 
 inline PortDeclaration::PortDeclaration(Attributes* attrs__, Type type__, Declaration* decl__) : ModuleItem(Node::Tag::port_declaration) {
   PTR_SETUP(attrs);

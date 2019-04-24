@@ -47,6 +47,7 @@ class ParameterDeclaration : public Declaration {
     // Node Interface:
     NODE(ParameterDeclaration)
     ParameterDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(ParameterDeclaration, bool, signed)
@@ -58,6 +59,15 @@ class ParameterDeclaration : public Declaration {
     MAYBE_ATTR(RangeExpression, dim);
     PTR_ATTR(Expression, val);
 };
+
+std::string ParameterDeclaration::stringify() const {
+  STRINGIFY_BEGIN(ParameterDeclaration);
+  STRINGIFY_SUPER(Declaration);
+  STRINGIFY_BASE_VAL(signed);
+  STRINGIFY_POINTER(dim);
+  STRINGIFY_POINTER(val);
+  STRINGIFY_END();
+}
 
 inline ParameterDeclaration::ParameterDeclaration(Attributes* attrs__, bool signed__, Identifier* id__, Expression* val__) : Declaration(Node::Tag::parameter_declaration) {
   PTR_SETUP(attrs);

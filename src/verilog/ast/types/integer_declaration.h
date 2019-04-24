@@ -47,6 +47,7 @@ class IntegerDeclaration : public Declaration {
     // Node Interface:
     NODE(IntegerDeclaration)
     IntegerDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MAYBE_GET_SET(IntegerDeclaration, Expression, val)
@@ -54,6 +55,13 @@ class IntegerDeclaration : public Declaration {
   private:
     MAYBE_ATTR(Expression, val);
 };
+
+std::string IntegerDeclaration::stringify() const {
+  STRINGIFY_BEGIN(IntegerDeclaration);
+  STRINGIFY_SUPER(Declaration);
+  STRINGIFY_POINTER(val);
+  STRINGIFY_END();
+}
 
 inline IntegerDeclaration::IntegerDeclaration(Attributes* attrs__, Identifier* id__) : Declaration(Node::Tag::integer_declaration) {
   PTR_SETUP(attrs);

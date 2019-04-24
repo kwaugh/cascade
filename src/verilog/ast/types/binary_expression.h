@@ -73,6 +73,7 @@ class BinaryExpression : public Expression {
     // Node Interface:
     NODE(BinaryExpression)
     BinaryExpression* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set
     PTR_GET_SET(BinaryExpression, Expression, lhs)
@@ -84,6 +85,15 @@ class BinaryExpression : public Expression {
     VAL_ATTR(Op, op);
     PTR_ATTR(Expression, rhs);
 };
+
+std::string BinaryExpression::stringify() const {
+  STRINGIFY_BEGIN(BinaryExpression);
+  STRINGIFY_SUPER(Expression);
+  STRINGIFY_POINTER(lhs);
+  STRINGIFY_VAL(op);
+  STRINGIFY_POINTER(rhs);
+  STRINGIFY_END();
+}
 
 inline BinaryExpression::BinaryExpression(Expression* lhs__, Op op__, Expression* rhs__) : Expression(Node::Tag::binary_expression) {
   PTR_SETUP(lhs);

@@ -43,10 +43,17 @@ class Primary : public Expression {
 
     // Node Interface:
     Primary* clone() const override = 0;
+    std::string stringify() const override;
     Primary* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
 };
+
+std::string Primary::stringify() const {
+  STRINGIFY_BEGIN(Primary);
+  STRINGIFY_SUPER(Expression);
+  STRINGIFY_END();
+}
 
 inline Primary::Primary(Node::Tag tag) : Expression(tag) { }
 

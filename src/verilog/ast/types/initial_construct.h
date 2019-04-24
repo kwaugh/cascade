@@ -47,6 +47,7 @@ class InitialConstruct : public Construct {
     // Node Interface:
     NODE(InitialConstruct)
     InitialConstruct* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(InitialConstruct, Attributes, attrs)
@@ -56,6 +57,14 @@ class InitialConstruct : public Construct {
     PTR_ATTR(Attributes, attrs);
     PTR_ATTR(Statement, stmt);
 };
+
+std::string InitialConstruct::stringify() const {
+  STRINGIFY_BEGIN(InitialConstruct);
+  STRINGIFY_SUPER(Construct);
+  STRINGIFY_POINTER(attrs);
+  STRINGIFY_POINTER(stmt);
+  STRINGIFY_END();
+}
 
 inline InitialConstruct::InitialConstruct(Attributes* attrs__, Statement* stmt__) : Construct(Node::Tag::initial_construct) {
   PTR_SETUP(attrs);

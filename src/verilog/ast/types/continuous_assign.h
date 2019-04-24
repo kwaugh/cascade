@@ -48,6 +48,8 @@ class ContinuousAssign : public ModuleItem {
     // Node Interface:
     NODE(ContinuousAssign)
     ContinuousAssign* clone() const override;
+    virtual std::string stringify() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MAYBE_GET_SET(ContinuousAssign, DelayControl, ctrl)
@@ -57,6 +59,22 @@ class ContinuousAssign : public ModuleItem {
     MAYBE_ATTR(DelayControl, ctrl);
     PTR_ATTR(VariableAssign, assign);
 };
+
+std::string ContinuousAssign::stringify() const {
+  STRINGIFY_BEGIN(ContinuousAssign);
+  STRINGIFY_SUPER(ModuleItem);
+  STRINGIFY_POINTER(ctrl);
+  STRINGIFY_POINTER(assign);
+  STRINGIFY_END();
+}
+
+std::string ContinuousAssign::stringify() const {
+  STRINGIFY_BEGIN(ContinuousAssign);
+  STRINGIFY_SUPER(ModuleItem);
+  STRINGIFY_POINTER(ctrl);
+  STRINGIFY_POINTER(assign);
+  STRINGIFY_END();
+}
 
 inline ContinuousAssign::ContinuousAssign(VariableAssign* assign__) : ModuleItem(Node::Tag::continuous_assign) {
   MAYBE_DEFAULT_SETUP(ctrl);

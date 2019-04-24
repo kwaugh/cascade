@@ -54,6 +54,7 @@ class NetDeclaration : public Declaration {
     // Node Interface:
     NODE(NetDeclaration)
     NetDeclaration* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(NetDeclaration, Type, type)
@@ -67,6 +68,16 @@ class NetDeclaration : public Declaration {
     VAL_ATTR(bool, signed);
     MAYBE_ATTR(RangeExpression, dim);
 };
+
+std::string NetDeclaration::stringify() const {
+  STRINGIFY_BEGIN(NetDeclaration);
+  STRINGIFY_SUPER(Declaration);
+  STRINGIFY_BASE_VAL((uint8_t) type);
+  STRINGIFY_POINTER(ctrl);
+  STRINGIFY_BASE_VAL(signed);
+  STRINGIFY_POINTER(dim);
+  STRINGIFY_END();
+}
 
 inline NetDeclaration::NetDeclaration(Attributes* attrs__, Type type__, Identifier* id__, bool signed__) : Declaration(Node::Tag::net_declaration) {
   PTR_SETUP(attrs);

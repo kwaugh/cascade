@@ -53,6 +53,7 @@ class Event : public Node {
     // Node Interface:
     NODE(Event)
     Event* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set:
     VAL_GET_SET(Event, Type, type)
@@ -62,6 +63,14 @@ class Event : public Node {
     VAL_ATTR(Type, type);
     PTR_ATTR(Expression, expr);
 };
+
+std::string Event::stringify() const {
+  STRINGIFY_BEGIN(Event);
+  STRINGIFY_SUPER(Node);
+  STRINGIFY_VAL(type);
+  STRINGIFY_POINTER(expr);
+  STRINGIFY_END();
+}
 
 inline Event::Event(Type type__, Expression* expr__) : Node(Node::Tag::event) {
   VAL_SETUP(type);

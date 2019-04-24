@@ -41,6 +41,7 @@
 
 #include <string>
 #include <typeinfo>
+#include "src/verilog/ast/types/macro.h"
 
 #define STRINGIFY_BEGIN(type) \
     ostringstream ss; \
@@ -50,20 +51,20 @@
     ss << "}";\
     return ss.str();
 
-#define STRINGIFY_BASE_FIELD(field) \
-    ss << "VAL{" << typeid(field).name() << "," << field << "},";
+#define STRINGIFY_BASE_VAL(field) \
+    ss << "VAL{" << typeid(PRIVATE(field)).name() << "," << field << "},";
 
-#define STRINGIFY_FIELD(field) \
-    ss << "VAL" << field.stringify() << ",";
+#define STRINGIFY_VAL(field) \
+    ss << "VAL" << PRIVATE(field).stringify() << ",";
 
 #define STRINGIFY_SUPER(super) \
     ss << "SUPER" << super::stringify() << ",";
 
 #define STRINGIFY_POINTER(pointer) \
-    ss << "POINTER" << pointer->stringify() << ",";
+    ss << "POINTER" << PRIVATE(pointer)->stringify() << ",";
 
 #define STRINGIFY_VECTOR(v) { \
-    for (const auto& it : v) { \
+    for (const auto& it : PRIVATE(v)) { \
         ss << it.stringify(); \
     } \
 }

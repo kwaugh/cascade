@@ -44,6 +44,7 @@ class ConditionalGenerateConstruct : public GenerateConstruct {
 
     // Node Interface:
     ConditionalGenerateConstruct* clone() const override = 0;
+    virtual std::string stringify() const override;
     ConditionalGenerateConstruct* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
@@ -52,6 +53,12 @@ class ConditionalGenerateConstruct : public GenerateConstruct {
     friend class Elaborate;
     DECORATION(GenerateBlock*, gen);
 };
+
+std::string ConditionalGenerateConstruct::stringify() const {
+  STRINGIFY_BEGIN(ConditionalGenerateConstruct);
+  STRINGIFY_SUPER(GenerateConstruct);
+  STRINGIFY_END();
+}
 
 inline ConditionalGenerateConstruct::ConditionalGenerateConstruct(Node::Tag tag) : GenerateConstruct(tag) { }
 

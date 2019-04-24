@@ -47,6 +47,7 @@ class GenerateRegion : public ModuleItem {
     // Node Interface:
     NODE(GenerateRegion)
     GenerateRegion* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     MANY_GET_SET(GenerateRegion, ModuleItem, items)
@@ -54,6 +55,13 @@ class GenerateRegion : public ModuleItem {
   private:
     MANY_ATTR(ModuleItem, items);
 };
+
+std::string GenerateRegion::stringify() const {
+  STRINGIFY_BEGIN(GenerateRegion);
+  STRINGIFY_SUPER(ModuleItem);
+  STRINGIFY_VECTOR(items);
+  STRINGIFY_END();
+}
 
 inline GenerateRegion::GenerateRegion() : ModuleItem(Node::Tag::generate_region) {
   MANY_DEFAULT_SETUP(items);

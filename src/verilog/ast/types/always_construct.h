@@ -46,6 +46,7 @@ class AlwaysConstruct : public Construct {
     // Node Interface:
     NODE(AlwaysConstruct)
     AlwaysConstruct* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set
     PTR_GET_SET(AlwaysConstruct, Statement, stmt)
@@ -53,6 +54,13 @@ class AlwaysConstruct : public Construct {
   private:
     PTR_ATTR(Statement, stmt);
 };
+
+std::string AlwaysConstruct::stringify() const {
+  STRINGIFY_BEGIN(AlwaysConstruct);
+  STRINGIFY_SUPER(Construct);
+  STRINGIFY_POINTER(stmt);
+  STRINGIFY_END();
+}
 
 inline AlwaysConstruct::AlwaysConstruct(Statement* stmt__) : Construct(Node::Tag::always_construct) {
   PTR_SETUP(stmt);

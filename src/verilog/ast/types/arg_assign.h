@@ -48,6 +48,7 @@ class ArgAssign : public Node {
     // Node Interface:
     NODE(ArgAssign)
     ArgAssign* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set
     MAYBE_GET_SET(ArgAssign, Identifier, exp)
@@ -57,6 +58,14 @@ class ArgAssign : public Node {
     MAYBE_ATTR(Identifier, exp);
     MAYBE_ATTR(Expression, imp);
 };
+
+std::string ArgAssign::stringify() const {
+    STRINGIFY_BEGIN(ArgAssign);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_POINTER(exp);
+    STRINGIFY_POINTER(imp);
+    STRINGIFY_END();
+}
 
 inline ArgAssign::ArgAssign() : Node(Node::Tag::arg_assign) { 
   MAYBE_DEFAULT_SETUP(exp);

@@ -51,6 +51,7 @@ class IfGenerateConstruct : public ConditionalGenerateConstruct {
     // Node Interface:
     NODE(IfGenerateConstruct)
     IfGenerateConstruct* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set:
     PTR_GET_SET(IfGenerateConstruct, Attributes, attrs)
@@ -63,6 +64,15 @@ class IfGenerateConstruct : public ConditionalGenerateConstruct {
     MANY_ATTR(IfGenerateClause, clauses);
     MAYBE_ATTR(GenerateBlock, else);
 };
+
+std::string IfGenerateConstruct::stringify() const {
+  STRINGIFY_BEGIN(IfGenerateConstruct);
+  STRINGIFY_SUPER(ConditionalGenerateConstruct);
+  STRINGIFY_POINTER(attrs);
+  STRINGIFY_VECTOR(clauses);
+  STRINGIFY_POINTER(else);
+  STRINGIFY_END();
+}
 
 inline IfGenerateConstruct::IfGenerateConstruct(Attributes* attrs__) : ConditionalGenerateConstruct(Node::Tag::if_generate_construct) {
   PTR_SETUP(attrs);

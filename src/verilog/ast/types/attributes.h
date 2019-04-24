@@ -52,6 +52,7 @@ class Attributes : public Node {
     // Node Interface:
     NODE(Attributes)
     Attributes* clone() const override;
+    std::string stringify() const override;
 
     // Get/Set
     MANY_GET_SET(Attributes, AttrSpec, as)
@@ -68,9 +69,10 @@ class Attributes : public Node {
 };
 
 std::string Attributes::stringify() const {
-    stringify_begin(Attributes);
-    stringify_vector(PRIVATE(as));
-    stringify_end();
+    STRINGIFY_BEGIN(Attributes);
+    STRINGIFY_SUPER(Node);
+    STRINGIFY_VECTOR(as);
+    STRINGIFY_END();
 }
 
 inline Attributes::Attributes() : Node(Node::Tag::attributes) {

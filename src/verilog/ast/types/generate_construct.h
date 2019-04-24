@@ -43,10 +43,17 @@ class GenerateConstruct : public Construct {
 
     // Node Interface:
     GenerateConstruct* clone() const override = 0;
+    virtual std::string stringify() const override;
     GenerateConstruct* accept(Builder* b) const override = 0;
     void accept(Editor* e) override = 0;
     void accept(Visitor* v) const override = 0;
 };
+
+std::string GenerateConstruct::stringify() const {
+  STRINGIFY_BEGIN(GenerateConstruct);
+  STRINGIFY_SUPER(Construct);
+  STRINGIFY_END();
+}
 
 inline GenerateConstruct::GenerateConstruct(Node::Tag tag) : Construct(tag) { }
 

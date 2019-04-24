@@ -49,6 +49,7 @@ class CaseGenerateConstruct : public ConditionalGenerateConstruct {
     // Node Interface:
     NODE(CaseGenerateConstruct)
     CaseGenerateConstruct* clone() const override;
+    virtual std::string stringify() const override;
 
     // Get/Set
     PTR_GET_SET(CaseGenerateConstruct, Expression, cond)
@@ -58,6 +59,14 @@ class CaseGenerateConstruct : public ConditionalGenerateConstruct {
     PTR_ATTR(Expression, cond);
     MANY_ATTR(CaseGenerateItem, items);
 };
+
+std::string CaseGenerateConstruct::stringify() const {
+  STRINGIFY_BEGIN(CaseGenerateConstruct);
+  STRINGIFY_SUPER(ConditionalGenerateConstruct);
+  STRINGIFY_POINTER(cond);
+  STRINGIFY_VECTOR(items);
+  STRINGIFY_END();
+}
 
 inline CaseGenerateConstruct::CaseGenerateConstruct(Expression* cond__) : ConditionalGenerateConstruct(Node::Tag::case_generate_construct) {
   PTR_SETUP(cond);

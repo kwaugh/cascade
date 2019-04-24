@@ -58,6 +58,7 @@ class Number : public Primary {
     // Node Interface 
     NODE(Number)
     Number* clone() const override;
+    std::string stringify() const override;
 
     // Stripped down get/set:
     const Bits& get_val() const;
@@ -68,6 +69,12 @@ class Number : public Primary {
     // NOTE: All attributes and decorations are stored in Node::common_ and
     // Expression::bit_val_
 };
+
+std::string Number::stringify() const {
+  STRINGIFY_BEGIN(Number);
+  STRINGIFY_SUPER(Primary);
+  STRINGIFY_END();
+}
 
 inline Number::Number(const std::string& val, Format format, size_t size, bool is_signed) : Primary(Node::Tag::number) {
   parent_ = nullptr;
