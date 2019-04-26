@@ -62,7 +62,9 @@
     ss << "SUPER" << super::stringify() << ",";
 
 #define STRINGIFY_POINTER(pointer) \
-    ss << "POINTER" << PRIVATE(pointer)->stringify() << ",";
+    if (PRIVATE(pointer)) { \
+        ss << "POINTER" << PRIVATE(pointer)->stringify() << ","; \
+    }
 
 #define STRINGIFY_TOKEN(tok) \
     ss << "TOKEN" << Tokenize::unmap(PRIVATE(tok)) << ",";
