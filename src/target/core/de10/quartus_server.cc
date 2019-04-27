@@ -168,6 +168,8 @@ void QuartusServer::killall() {
 void QuartusServer::update_slot(sockstream* sock) {
   const auto i = static_cast<size_t>(sock->get());
   assert(i < slots_.size());
+  string ast_hash = "";
+  getline(*sock, ast_hash, '\0');
   string text = "";
   getline(*sock, text, '\0');
 

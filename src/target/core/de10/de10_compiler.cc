@@ -223,6 +223,9 @@ De10Logic* De10Compiler::compile_logic(Interface* interface, ModuleDeclaration* 
   sockstream sock2(host_.c_str(), port_);
   sock2.put(static_cast<uint8_t>(QuartusServer::Rpc::UPDATE_SLOT));
   sock2.put(static_cast<uint8_t>(sid));
+  const auto ast_hash = Hash::sha3_512(md->stringify());
+  sock2.write(ast_hash.c_str(), ast_hash.length());
+  sock2.put('\0');
   const auto text = ModuleBoxer().box(md, de);
   sock2.write(text.c_str(), text.length());
   sock2.put('\0');

@@ -33,6 +33,7 @@
 
 #include <stdint.h>
 #include <string>
+#include "src/base/hash/hash.h"
 #include "src/target/core_compiler.h"
 #include "src/target/core/de10/de10_gpio.h"
 #include "src/target/core/de10/de10_led.h"
