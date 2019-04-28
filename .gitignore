@@ -38,3 +38,7 @@
 *stack.hh
 *.output
 *.tab.*
+
+# Vim generated files
+*.vim
+tags
