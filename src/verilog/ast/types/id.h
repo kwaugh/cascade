@@ -74,6 +74,9 @@ class Id : public Node {
 inline std::string Id::stringify() const {
   STRINGIFY_BEGIN(Id);
   STRINGIFY_SUPER(Node);
+  // use the token index to differentiate between identifiers, not its name
+  // this prevents variable renaming from changing the stringify
+  STRINGIFY_BASE_VAL((uint32_t) sid);
   STRINGIFY_POINTER(isel);
   STRINGIFY_END();
 }
