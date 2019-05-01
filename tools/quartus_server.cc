@@ -33,6 +33,7 @@
 #include <signal.h>
 #include <string>
 #include "ext/cl/include/cl.h"
+#include "src/base/system/system.h"
 #include "src/target/core/de10/quartus_server.h"
 
 using namespace cl;
@@ -46,6 +47,8 @@ auto& cache = StrArg<string>::create("--cache")
   .usage("<path/to/cache>")
   .description("Path to directory to use as compilation cache")
   .initial("/tmp/quartus_cache");
+auto& flush_cache = FlagArg::create("--flush_cache")
+  .description("Removes all cached bitstreams in the caching directory");
 auto& path = StrArg<string>::create("--path")
   .usage("<path/to/quarus>")
   .description("Path to quartus installation directory")
@@ -76,6 +79,10 @@ int main(int argc, char** argv) {
   memset(&action, 0, sizeof(action));
   action.sa_handler = ::handler;
   sigaction(SIGINT, &action, nullptr);
+
+  if (::flush_cache.value()) {
+    System::execute("rm " + ::cache.value() + "/*");
+  }
 
   ::qs = new QuartusServer();
   ::qs->set_cache_path(::cache.value());
