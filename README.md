@@ -3,8 +3,13 @@ Our Changes
 Cascade recently added preliminary support for caching bitstreams of previously compiled programs. Our goal is to extend this support in the following ways:
 
 1. See if we can compile on the module level
+    - It appears that we cannot do this in general due to the nature of place-and-route which needs to take the entire program as input in order to palce things correctly
 2. Do hashing to check if program is in the cache rather than just checking the
-first line of the program
+    - The original caching implementation looks for a cache hit based on the entire program text.
+    - Our implementation looks only at the AST which comes with the following benefits:
+        - Changing comments does not result in a cache miss
+        - Renaming variables does not result in a cache miss
+        - Reordering certain operations (where the resultant program is semantically equivalent) does not result in a cache miss
 3. See how we can elliminate false-positives caused by hash collision
     - We have decided to just use a hashing algorithm like SHA3-512 that has an extremely low probability of getting a hash collision (assuming the hash function is uniformly random).
     - To handle errors with collisions, we'll add a clean command to wipe the cache so that the code will get recompiled.
