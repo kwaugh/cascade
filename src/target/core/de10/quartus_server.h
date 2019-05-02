@@ -95,7 +95,7 @@ class QuartusServer : public Asynchronous {
     void return_slot(sockstream* sock);
     void killall();
     void update_slot(sockstream* sock);
-    void recompile(size_t my_version);
+    void recompile(size_t my_version, const std::string& ast_hash);
     void abort();
 
     void run_logic() override;

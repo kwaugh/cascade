@@ -179,7 +179,7 @@ void QuartusServer::update_slot(sockstream* sock) {
   unique_lock<mutex> ul(lock_);
   slots_[i].first = QuartusServer::State::WAITING;
   slots_[i].second = text;
-  pool_.insert(new ThreadPool::Job([this]{recompile(version_);}));
+  pool_.insert(new ThreadPool::Job([this, ast_hash]{recompile(version_, ast_hash);}));
 
   while (slots_[i].first == QuartusServer::State::WAITING) {
     cv_.wait(ul);
@@ -189,7 +189,7 @@ void QuartusServer::update_slot(sockstream* sock) {
   delete sock;
 }
 
-void QuartusServer::recompile(size_t my_version) {
+void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
   // This method takes a potentially very long time to run to completion. It's
   // important that it be atomic.  But it's also important that simultaneous
   // invocations of recompile() be able to preempt it. The way we deal with
@@ -215,7 +215,7 @@ void QuartusServer::recompile(size_t my_version) {
       }
     }
     text = pb.get();
-    itr = cache_.find(text);
+    itr = cache_.find(ast_hash);
     
     if (itr == cache_.end()) {
       ofstream ofs(System::src_root() + "/src/target/core/de10/fpga/ip/program_logic.v");
@@ -223,6 +223,8 @@ void QuartusServer::recompile(size_t my_version) {
       ofs.flush();
     }
   } 
+  std::cout << "before_qsys" << std::endl;
+  const auto before_qsys = std::chrono::high_resolution_clock::now();
   { // Step 2: qsys
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -232,6 +234,10 @@ void QuartusServer::recompile(size_t my_version) {
       return;
     } 
   } 
+  const auto before_map = std::chrono::high_resolution_clock::now();
+  std::cout << "qsys time: " <<
+    chrono::duration_cast<chrono::milliseconds>(before_map -
+        before_qsys).count() << "ms" << std::endl;
   { // Step 3: map
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -241,6 +247,10 @@ void QuartusServer::recompile(size_t my_version) {
       return;
     } 
   } 
+  const auto before_fit = std::chrono::high_resolution_clock::now();
+  std::cout << "map time: " <<
+    chrono::duration_cast<chrono::milliseconds>(before_fit - before_map).count()
+    << "ms" << std::endl;
   { // Step 4: fit
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -250,6 +260,10 @@ void QuartusServer::recompile(size_t my_version) {
       return;
     } 
   } 
+  const auto before_asm = std::chrono::high_resolution_clock::now();
+  std::cout << "fit time: " <<
+    chrono::duration_cast<chrono::milliseconds>(before_asm - before_fit).count()
+    << "ms" << std::endl;
   { // Step 5: asm
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -259,6 +273,10 @@ void QuartusServer::recompile(size_t my_version) {
       return;
     }
   } 
+  const auto before_cache = std::chrono::high_resolution_clock::now();
+  std::cout << "asm time: " <<
+    chrono::duration_cast<chrono::milliseconds>(before_cache -
+        before_asm).count() << "ms" << std::endl;
   { // Step 6: Put code into cache, reprogram, update status, and notify all
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -271,10 +289,10 @@ void QuartusServer::recompile(size_t my_version) {
       System::execute("cp " + System::src_root() + "/src/target/core/de10/fpga/output_files/DE10_NANO_SoC_GHRD.sof " + cache_path_ + "/" + file);
 
       ofstream ofs(cache_path_ + "/index.txt", ios::app);
-      ofs << text << '\0' << file << '\0';
+      ofs << ast_hash << '\0' << file << '\0';
       ofs.flush();
 
-      itr = cache_.insert(make_pair(text, file)).first;
+      itr = cache_.insert(make_pair(ast_hash, file)).first;
     }
     if (System::execute(quartus_path_ + "/bin/quartus_pgm -c \"DE-SoC " + usb_ + "\" --mode JTAG -o \"P;" + cache_path_ + "/" + itr->second + "@2\"") != 0) {
       return;
@@ -286,6 +304,7 @@ void QuartusServer::recompile(size_t my_version) {
     }
     cv_.notify_all();
   }
+  std::cout << "finished compiling and updating cache" << std::endl;
 }
 
 void QuartusServer::run_logic() {
