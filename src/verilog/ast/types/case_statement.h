@@ -97,7 +97,7 @@ inline std::string CaseStatement::stringify() const {
     STRINGIFY_SUPER(Statement);
     STRINGIFY_BASE_VAL((uint8_t)type);
     STRINGIFY_POINTER(cond);
-    STRINGIFY_VECTOR(items);
+    STRINGIFY_VECTOR(items, false);
     STRINGIFY_END();
 }
 } // namespace cascade 

@@ -99,8 +99,8 @@ inline std::string ModuleDeclaration::stringify() const {
   STRINGIFY_SUPER(Node);
   STRINGIFY_POINTER(attrs);
   STRINGIFY_POINTER(id);
-  STRINGIFY_VECTOR(ports);
-  STRINGIFY_VECTOR(items);
+  STRINGIFY_VECTOR(ports, false);
+  STRINGIFY_VECTOR(items, false);
   STRINGIFY_END();
 }
 

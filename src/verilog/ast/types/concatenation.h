@@ -61,7 +61,7 @@ class Concatenation : public Primary {
 inline std::string Concatenation::stringify() const {
   STRINGIFY_BEGIN(Concatenation);
   STRINGIFY_SUPER(Primary);
-  STRINGIFY_VECTOR(exprs);
+  STRINGIFY_VECTOR(exprs, false);
   STRINGIFY_END();
 }
 

@@ -90,8 +90,8 @@ inline std::string ModuleInstantiation::stringify() const {
   STRINGIFY_POINTER(mid);
   STRINGIFY_POINTER(iid);
   STRINGIFY_POINTER(range);
-  STRINGIFY_VECTOR(params);
-  STRINGIFY_VECTOR(ports);
+  STRINGIFY_VECTOR(params, false);
+  STRINGIFY_VECTOR(ports, false);
   STRINGIFY_END();
 }
 

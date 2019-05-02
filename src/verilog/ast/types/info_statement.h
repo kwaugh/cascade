@@ -80,7 +80,7 @@ inline InfoStatement* InfoStatement::clone() const {
 inline std::string InfoStatement::stringify() const {
   STRINGIFY_BEGIN(InfoStatement);
   STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_VECTOR(args);
+  STRINGIFY_VECTOR(args, false);
   STRINGIFY_END();
 }
 } // namespace cascade 

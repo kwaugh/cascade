@@ -97,8 +97,8 @@ inline SeqBlock* SeqBlock::clone() const {
 inline std::string SeqBlock::stringify() const {
     STRINGIFY_BEGIN(Statement);
     STRINGIFY_SUPER(Node);
-    STRINGIFY_VECTOR(decls);
-    STRINGIFY_VECTOR(stmts);
+    STRINGIFY_VECTOR(decls, false);
+    STRINGIFY_VECTOR(stmts, false);
     /* STRINGIFY_VAL(scope_idx); */
     STRINGIFY_END();
 }

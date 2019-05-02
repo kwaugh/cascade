@@ -64,7 +64,7 @@ inline std::string CaseGenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(CaseGenerateConstruct);
   STRINGIFY_SUPER(ConditionalGenerateConstruct);
   STRINGIFY_POINTER(cond);
-  STRINGIFY_VECTOR(items);
+  STRINGIFY_VECTOR(items, false);
   STRINGIFY_END();
 }
 

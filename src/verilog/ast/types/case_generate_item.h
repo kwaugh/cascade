@@ -63,7 +63,7 @@ class CaseGenerateItem : public Node {
 inline std::string CaseGenerateItem::stringify() const {
     STRINGIFY_BEGIN(CaseGenerateItem);
     STRINGIFY_SUPER(Node);
-    STRINGIFY_VECTOR(exprs);
+    STRINGIFY_VECTOR(exprs, false);
     STRINGIFY_POINTER(block);
     STRINGIFY_END();
 }

@@ -59,7 +59,7 @@ class GenerateRegion : public ModuleItem {
 inline std::string GenerateRegion::stringify() const {
   STRINGIFY_BEGIN(GenerateRegion);
   STRINGIFY_SUPER(ModuleItem);
-  STRINGIFY_VECTOR(items);
+  STRINGIFY_VECTOR(items, false);
   STRINGIFY_END();
 }
 

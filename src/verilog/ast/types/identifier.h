@@ -80,8 +80,8 @@ class Identifier : public Primary {
 inline std::string Identifier::stringify() const {
   STRINGIFY_BEGIN(Identifier);
   STRINGIFY_SUPER(Primary);
-  STRINGIFY_VECTOR(ids);
-  STRINGIFY_VECTOR(dim);
+  STRINGIFY_VECTOR(ids, false);
+  STRINGIFY_VECTOR(dim, false);
   STRINGIFY_END();
 }
 

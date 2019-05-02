@@ -80,7 +80,7 @@ inline EventControl* EventControl::clone() const {
 inline std::string EventControl::stringify() const {
   STRINGIFY_BEGIN(EventControl);
   STRINGIFY_SUPER(TimingControl);
-  STRINGIFY_VECTOR(events);
+  STRINGIFY_VECTOR(events, false);
   STRINGIFY_END();
 }
 } // namespace cascade 

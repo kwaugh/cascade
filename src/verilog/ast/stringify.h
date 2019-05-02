@@ -39,6 +39,7 @@
 #ifndef CASCADE_SRC_VERILOG_AST_STRINGIFY_H
 #define CASCADE_SRC_VERILOG_AST_STRINGIFY_H
 
+#include <algorithm>
 #include <sstream>
 #include <string>
 #include <typeinfo>
@@ -69,9 +70,15 @@
 #define STRINGIFY_TOKEN(tok) \
     ss << "TOKEN" << Tokenize::unmap(PRIVATE(tok)) << ",";
 
-#define STRINGIFY_VECTOR(v) \
-    for (const auto& it : PRIVATE(v)) { \
-        ss << it->stringify(); \
+#define STRINGIFY_VECTOR(v, should_sort) \
+    { \
+        auto vec = PRIVATE(v); \
+        if (should_sort) { \
+            std::sort(vec.begin(), vec.end());  \
+        } \
+        for (const auto& it : vec) { \
+            ss << it->stringify(); \
+        } \
     }
 
 #endif

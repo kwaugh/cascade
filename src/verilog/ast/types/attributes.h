@@ -71,7 +71,7 @@ class Attributes : public Node {
 inline std::string Attributes::stringify() const {
     STRINGIFY_BEGIN(Attributes);
     STRINGIFY_SUPER(Node);
-    STRINGIFY_VECTOR(as);
+    STRINGIFY_VECTOR(as, false);
     STRINGIFY_END();
 }
 

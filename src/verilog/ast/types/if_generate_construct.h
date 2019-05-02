@@ -69,7 +69,7 @@ inline std::string IfGenerateConstruct::stringify() const {
   STRINGIFY_BEGIN(IfGenerateConstruct);
   STRINGIFY_SUPER(ConditionalGenerateConstruct);
   STRINGIFY_POINTER(attrs);
-  STRINGIFY_VECTOR(clauses);
+  STRINGIFY_VECTOR(clauses, false);
   STRINGIFY_POINTER(else);
   STRINGIFY_END();
 }
