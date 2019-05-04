@@ -62,6 +62,7 @@ class QuartusServer : public Asynchronous {
     QuartusServer& set_quartus_path(const std::string& path);
     QuartusServer& set_port(uint32_t port);
     QuartusServer& set_usb(const std::string& usb);
+    QuartusServer& set_virtualize_fpga(bool virtualize_fpga);
 
     bool error() const;
 
@@ -85,6 +86,7 @@ class QuartusServer : public Asynchronous {
     std::mutex lock_;
     std::condition_variable cv_;
     size_t version_;
+    bool virtualize_fpga_;
 
     void init_pool();
     void init_cache();

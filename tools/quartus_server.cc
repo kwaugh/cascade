@@ -61,6 +61,11 @@ auto& usb = StrArg<string>::create("--usb")
   .usage("[x-y]")
   .description("USB interface providing JTAG connectivity")
   .initial("[3-11]");
+auto& virtualize_fpga = FlagArg::create("--virtualize_fpga")
+  .description("Doesn't actually compile programs for the FPGA, but rather "
+          "pretends like an FPGA exists and outputs garbage as the results of "
+          "Quartus operations. This is mainly used for testing the caching "
+          "mechanism without having a device plugged in");
 
 QuartusServer* qs = nullptr;
 
@@ -89,6 +94,7 @@ int main(int argc, char** argv) {
   ::qs->set_quartus_path(::path.value());
   ::qs->set_port(::port.value());
   ::qs->set_usb(::usb.value());
+  ::qs->set_virtualize_fpga(::virtualize_fpga.value());
 
   if (::qs->error()) {
     cout << "Unable to locate core quartus components!" << endl;

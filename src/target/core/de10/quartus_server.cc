@@ -45,6 +45,7 @@ QuartusServer::QuartusServer() : Asynchronous() {
   set_quartus_path("");
   set_port(9900);
   set_usb("");
+  set_virtualize_fpga(false);
 }
 
 QuartusServer& QuartusServer::set_cache_path(const string& path) {
@@ -64,6 +65,11 @@ QuartusServer& QuartusServer::set_port(uint32_t port) {
 
 QuartusServer& QuartusServer::set_usb(const string& usb) {
   usb_ = usb;
+  return *this;
+}
+
+QuartusServer& QuartusServer::set_virtualize_fpga(bool virtualize_fpga) {
+  virtualize_fpga_ = virtualize_fpga;
   return *this;
 }
 
@@ -102,15 +108,15 @@ void QuartusServer::init_cache() {
   ifstream ifs(cache_path_ + "/index.txt");
   cache_.clear();
   while (true) {
-    string text;
-    getline(ifs, text, '\0');
+    string ast_hash;
+    getline(ifs, ast_hash, '\0');
     if (ifs.eof()) {
       break;
     } 
 
     string path;
     getline(ifs, path, '\0');
-    cache_.insert(make_pair(text, path));
+    cache_.insert(make_pair(ast_hash, path));
   } 
 }
 
@@ -215,9 +221,18 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       }
     }
     text = pb.get();
+    std::cout << "ast_hash: " << ast_hash << std::endl;
+    std::cout << "text: " << text << std::endl;
+    System::execute("echo \"" + text + "\" >> text.txt");
     itr = cache_.find(ast_hash);
+
+    if (itr != cache_.end()) {
+      std::cout << "CACHE HIT!" << std::endl;
+    } else {
+      std::cout << "CACHE MISS!" << std::endl;
+    }
     
-    if (itr == cache_.end()) {
+    if ((!virtualize_fpga_) && itr == cache_.end()) {
       ofstream ofs(System::src_root() + "/src/target/core/de10/fpga/ip/program_logic.v");
       ofs << text << endl;
       ofs.flush();
@@ -230,7 +245,7 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
     if (my_version < version_) {
       return;
     }
-    if ((itr == cache_.end()) && (System::execute(quartus_path_ + "/sopc_builder/bin/qsys-generate " + System::src_root() + "/src/target/core/de10/fpga/soc_system.qsys --synthesis=VERILOG") != 0)) {
+    if ((!virtualize_fpga_) && (itr == cache_.end()) && (System::execute(quartus_path_ + "/sopc_builder/bin/qsys-generate " + System::src_root() + "/src/target/core/de10/fpga/soc_system.qsys --synthesis=VERILOG") != 0)) {
       return;
     } 
   } 
@@ -243,7 +258,7 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
     if (my_version < version_) {
       return;
     }
-    if ((itr == cache_.end()) && (System::execute(quartus_path_ + "/bin/quartus_map " + System::src_root() + "/src/target/core/de10/fpga/DE10_NANO_SoC_GHRD.qpf") != 0)) {
+    if ((!virtualize_fpga_) && (itr == cache_.end()) && (System::execute(quartus_path_ + "/bin/quartus_map " + System::src_root() + "/src/target/core/de10/fpga/DE10_NANO_SoC_GHRD.qpf") != 0)) {
       return;
     } 
   } 
@@ -256,7 +271,7 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
     if (my_version < version_) {
       return;
     }
-    if ((itr == cache_.end()) && (System::execute(quartus_path_ + "/bin/quartus_fit " + System::src_root() + "/src/target/core/de10/fpga/DE10_NANO_SoC_GHRD.qpf") != 0)) {
+    if ((!virtualize_fpga_) && (itr == cache_.end()) && (System::execute(quartus_path_ + "/bin/quartus_fit " + System::src_root() + "/src/target/core/de10/fpga/DE10_NANO_SoC_GHRD.qpf") != 0)) {
       return;
     } 
   } 
@@ -269,7 +284,7 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
     if (my_version < version_) {
       return;
     }
-    if ((itr == cache_.end()) && (System::execute(quartus_path_ + "/bin/quartus_asm " + System::src_root() + "/src/target/core/de10/fpga/DE10_NANO_SoC_GHRD.qpf") != 0)) {
+    if ((!virtualize_fpga_) && (itr == cache_.end()) && (System::execute(quartus_path_ + "/bin/quartus_asm " + System::src_root() + "/src/target/core/de10/fpga/DE10_NANO_SoC_GHRD.qpf") != 0)) {
       return;
     }
   } 
@@ -286,7 +301,11 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       stringstream ss;
       ss << "bitstream_" << cache_.size() << ".sof";
       const auto file = ss.str();
-      System::execute("cp " + System::src_root() + "/src/target/core/de10/fpga/output_files/DE10_NANO_SoC_GHRD.sof " + cache_path_ + "/" + file);
+      if (!virtualize_fpga_) {
+        System::execute("cp " + System::src_root() + "/src/target/core/de10/fpga/output_files/DE10_NANO_SoC_GHRD.sof " + cache_path_ + "/" + file);
+      } else {
+        System::execute("echo \"foo\" > " + cache_path_ + "/" + file);
+      }
 
       ofstream ofs(cache_path_ + "/index.txt", ios::app);
       ofs << ast_hash << '\0' << file << '\0';
@@ -294,12 +313,16 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
 
       itr = cache_.insert(make_pair(ast_hash, file)).first;
     }
-    if (System::execute(quartus_path_ + "/bin/quartus_pgm -c \"DE-SoC " + usb_ + "\" --mode JTAG -o \"P;" + cache_path_ + "/" + itr->second + "@2\"") != 0) {
+    if (!virtualize_fpga_ && System::execute(quartus_path_ + "/bin/quartus_pgm -c \"DE-SoC " + usb_ + "\" --mode JTAG -o \"P;" + cache_path_ + "/" + itr->second + "@2\"") != 0) {
       return;
     } 
     for (auto& s : slots_) {
       if (s.first == QuartusServer::State::WAITING) {
-        s.first = QuartusServer::State::CURRENT;
+        if (virtualize_fpga_) {
+          s.first = QuartusServer::State::OPEN;
+        } else {
+          s.first = QuartusServer::State::CURRENT;
+        }
       }
     }
     cv_.notify_all();
