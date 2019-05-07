@@ -223,7 +223,12 @@ De10Logic* De10Compiler::compile_logic(Interface* interface, ModuleDeclaration* 
   sockstream sock2(host_.c_str(), port_);
   sock2.put(static_cast<uint8_t>(QuartusServer::Rpc::UPDATE_SLOT));
   sock2.put(static_cast<uint8_t>(sid));
-  const auto ast_hash = Hash::sha3_512(md->stringify());
+  auto ast_hash = Hash::sha3_512(md->stringify()).substr(0, 64);
+  std::replace(ast_hash.begin(), ast_hash.end(), '\0', 'E');
+  for (unsigned int i = 0; i < ast_hash.size(); i++) {
+    ast_hash[i] = ast_hash[i] == '\0' ? 'E' : ast_hash[i];
+  }
+  assert(ast_hash.find('\0') == std::string::npos); // this would mess up the sockets
   sock2.write(ast_hash.c_str(), ast_hash.length());
   sock2.put('\0');
   const auto text = ModuleBoxer().box(md, de);

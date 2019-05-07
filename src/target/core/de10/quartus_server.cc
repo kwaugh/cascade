@@ -190,7 +190,11 @@ void QuartusServer::update_slot(sockstream* sock) {
   while (slots_[i].first == QuartusServer::State::WAITING) {
     cv_.wait(ul);
   }  
-  sock->put((slots_[i].first == QuartusServer::State::CURRENT) ? 0 : 1);
+  if (virtualize_fpga_) {
+    sock->put(0);
+  } else {
+    sock->put((slots_[i].first == QuartusServer::State::CURRENT) ? 0 : 1);
+  }
   sock->flush();
   delete sock;
 }
@@ -221,9 +225,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       }
     }
     text = pb.get();
-    std::cout << "ast_hash: " << ast_hash << std::endl;
-    std::cout << "text: " << text << std::endl;
-    System::execute("echo \"" + text + "\" >> text.txt");
     itr = cache_.find(ast_hash);
 
     if (itr != cache_.end()) {

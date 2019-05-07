@@ -239,7 +239,7 @@ inline uint32_t Node::get_val() const {
 
 inline std::string Node::stringify() const {
     STRINGIFY_BEGIN(Node);
-    STRINGIFY_BASE_VAL(common);
+    /* STRINGIFY_BASE_VAL(common); */
     STRINGIFY_BASE_VAL((uint32_t)tag);
     STRINGIFY_END();
 }
