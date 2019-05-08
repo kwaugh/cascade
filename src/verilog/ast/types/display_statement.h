@@ -78,10 +78,11 @@ inline DisplayStatement* DisplayStatement::clone() const {
 }
 
 inline std::string DisplayStatement::stringify() const {
-  STRINGIFY_BEGIN(DisplayStatement);
-  STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_VECTOR(args, false);
-  STRINGIFY_END();
+  return "";
+  /* STRINGIFY_BEGIN(DisplayStatement); */
+  /* STRINGIFY_SUPER(SystemTaskEnableStatement); */
+  /* STRINGIFY_VECTOR(args, false); */
+  /* STRINGIFY_END(); */
 }
 } // namespace cascade 
 
