@@ -239,8 +239,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       ofs.flush();
     }
   } 
-  std::cout << "before_qsys" << std::endl;
-  const auto before_qsys = std::chrono::high_resolution_clock::now();
   { // Step 2: qsys
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -250,10 +248,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       return;
     } 
   } 
-  const auto before_map = std::chrono::high_resolution_clock::now();
-  std::cout << "qsys time: " <<
-    chrono::duration_cast<chrono::milliseconds>(before_map -
-        before_qsys).count() << "ms" << std::endl;
   { // Step 3: map
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -263,10 +257,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       return;
     } 
   } 
-  const auto before_fit = std::chrono::high_resolution_clock::now();
-  std::cout << "map time: " <<
-    chrono::duration_cast<chrono::milliseconds>(before_fit - before_map).count()
-    << "ms" << std::endl;
   { // Step 4: fit
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -276,10 +266,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       return;
     } 
   } 
-  const auto before_asm = std::chrono::high_resolution_clock::now();
-  std::cout << "fit time: " <<
-    chrono::duration_cast<chrono::milliseconds>(before_asm - before_fit).count()
-    << "ms" << std::endl;
   { // Step 5: asm
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -289,10 +275,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
       return;
     }
   } 
-  const auto before_cache = std::chrono::high_resolution_clock::now();
-  std::cout << "asm time: " <<
-    chrono::duration_cast<chrono::milliseconds>(before_cache -
-        before_asm).count() << "ms" << std::endl;
   { // Step 6: Put code into cache, reprogram, update status, and notify all
     lock_guard<mutex> lg(lock_);
     if (my_version < version_) {
@@ -328,7 +310,6 @@ void QuartusServer::recompile(size_t my_version, const std::string& ast_hash) {
     }
     cv_.notify_all();
   }
-  std::cout << "finished compiling and updating cache" << std::endl;
 }
 
 void QuartusServer::run_logic() {
