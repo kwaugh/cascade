@@ -69,10 +69,11 @@ inline RetargetStatement* RetargetStatement::clone() const {
 }
 
 inline std::string RetargetStatement::stringify() const {
-  STRINGIFY_BEGIN(RetargetStatement);
-  STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_POINTER(arg);
-  STRINGIFY_END();
+  return "";
+  /* STRINGIFY_BEGIN(RetargetStatement); */
+  /* STRINGIFY_SUPER(SystemTaskEnableStatement); */
+  /* STRINGIFY_POINTER(arg); */
+  /* STRINGIFY_END(); */
 }
 } // namespace cascade 
 

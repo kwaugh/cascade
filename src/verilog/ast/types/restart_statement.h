@@ -69,10 +69,11 @@ inline RestartStatement* RestartStatement::clone() const {
 }
 
 inline std::string RestartStatement::stringify() const {
-  STRINGIFY_BEGIN(RestartStatement);
-  STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_POINTER(arg);
-  STRINGIFY_END();
+  return "";
+  /* STRINGIFY_BEGIN(RestartStatement); */
+  /* STRINGIFY_SUPER(SystemTaskEnableStatement); */
+  /* STRINGIFY_POINTER(arg); */
+  /* STRINGIFY_END(); */
 }
 } // namespace cascade 
 

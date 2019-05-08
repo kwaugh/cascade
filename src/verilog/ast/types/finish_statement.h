@@ -69,10 +69,11 @@ inline FinishStatement* FinishStatement::clone() const {
 }
 
 inline std::string FinishStatement::stringify() const {
-  STRINGIFY_BEGIN(FinishStatement);
-  STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_POINTER(arg);
-  STRINGIFY_END();
+  return "";
+  /* STRINGIFY_BEGIN(FinishStatement); */
+  /* STRINGIFY_SUPER(SystemTaskEnableStatement); */
+  /* STRINGIFY_POINTER(arg); */
+  /* STRINGIFY_END(); */
 }
 } // namespace cascade 
 

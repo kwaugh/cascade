@@ -78,10 +78,11 @@ inline WarningStatement* WarningStatement::clone() const {
 }
 
 inline std::string WarningStatement::stringify() const {
-  STRINGIFY_BEGIN(WarningStatement);
-  STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_VECTOR(args, false);
-  STRINGIFY_END();
+  return "";
+  /* STRINGIFY_BEGIN(WarningStatement); */
+  /* STRINGIFY_SUPER(SystemTaskEnableStatement); */
+  /* STRINGIFY_VECTOR(args, false); */
+  /* STRINGIFY_END(); */
 }
 } // namespace cascade 
 

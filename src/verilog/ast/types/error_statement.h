@@ -78,10 +78,11 @@ inline ErrorStatement* ErrorStatement::clone() const {
 }
 
 inline std::string ErrorStatement::stringify() const {
-  STRINGIFY_BEGIN(ErrorStatement);
-  STRINGIFY_SUPER(SystemTaskEnableStatement);
-  STRINGIFY_VECTOR(args, false);
-  STRINGIFY_END();
+  return "";
+  /* STRINGIFY_BEGIN(ErrorStatement); */
+  /* STRINGIFY_SUPER(SystemTaskEnableStatement); */
+  /* STRINGIFY_VECTOR(args, false); */
+  /* STRINGIFY_END(); */
 }
 } // namespace cascade 
 
